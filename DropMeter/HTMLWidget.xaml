@@ -1,0 +1,17 @@
+﻿<Window x:Class="DropMeter.HTMLWidget"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DropMeter"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        mc:Ignorable="d"
+        Title="HTMLWidget" Height="450" Width="800" Loaded="Window_Loaded" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" Background="{x:Null}">
+    <Grid>
+        <wpf:ChromiumWebBrowser x:Name="WebView" IsBrowserInitializedChanged="WebView_IsBrowserInitializedChanged"/>
+        <Grid x:Name="WidgetMove" Background="White" Margin="0">
+            <Label Content="You now may drag this widget." VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <Button VerticalAlignment="Center" Content="Save Settings" Margin="314,238,314,192" Click="EnterWidgetMode"/>
+        </Grid>
+    </Grid>
+</Window>
