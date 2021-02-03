@@ -14,6 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CefSharp;
+using CefSharp.Internals;
+using CefSharp.JavascriptBinding;
+using CefSharp.Wpf;
+using DropMeter.CEF;
 
 namespace DropMeter
 {
@@ -22,6 +26,7 @@ namespace DropMeter
     /// </summary>
     public partial class HTMLWidget : Window
     {
+        public string PluginName;
         /************ win32 interop stuff ****************/
         [DllImport("user32.dll", SetLastError = true)]
         static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
@@ -37,11 +42,13 @@ namespace DropMeter
 
         const int GWL_HWNDPARENT = -8;
 
-        public HTMLWidget(bool attachToDesktop = true)
+        public HTMLWidget(string PluginName, bool attachToDesktop = true)
         {
             this.attachToDesktop = attachToDesktop;
             InitializeComponent();
             WebView.MenuHandler = new CloseMenuHandler(this);
+            WebView.DragHandler = new DragDropHandler();
+            this.PluginName = PluginName;
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -85,6 +92,19 @@ namespace DropMeter
                 }, IntPtr.Zero);
             }
             #endregion
+            var settings = new CefSettings
+            {
+                //BrowserSubprocessPath = GetCefExecutablePath()
+            };
+            settings.RegisterScheme(new CefCustomScheme
+            {
+                SchemeName = LocalFileHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new LocalFileHandlerFactory(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./widgets/")) //TODO
+            });
+            
+            Cef.Initialize(settings);
+
+
             EnterWidgetMode(null, null);
 
         }
@@ -95,10 +115,26 @@ namespace DropMeter
                 this.DragMove();
         }
 
-        private void WebView_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void WebView_IsBrowserInitializedChanged(object _, DependencyPropertyChangedEventArgs dep)
         {
-            
-            this.WebView.LoadHtml(@"<!DOCTYPE html>
+            this.WebView.JavascriptObjectRepository.ResolveObject += (sender, e) =>
+            {
+                var repo = e.ObjectRepository;
+                if (e.ObjectName == "DropMeter")
+                {
+                    BindingOptions bindingOptions = null; //Binding options is an optional param, defaults to null
+                    bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects,
+
+                   // bindingOptions = new BindingOptions { Binder = new MyCustomBinder() }); //No camelcase of names and specify a custom binder
+                    //For backwards compatability reasons the default NameConverter doesn't change the case of the objects returned from methods calls.
+                    //https://github.com/cefsharp/CefSharp/issues/2442
+                    //Use the new name converter to bound object method names and property names of returned objects converted to camelCase
+                    repo.NameConverter = new CamelCaseJavascriptNameConverter();
+                    repo.Register("DropMeter", new JSComContext(), isAsync: false, options: bindingOptions);
+                }
+            };
+            this.WebView.Address = $"{LocalFileHandlerFactory.SchemeName}://{PluginName}/index.html";
+            /*this.WebView.LoadHtml(@"<!DOCTYPE html>
 <html>
 <body>
 
@@ -109,11 +145,15 @@ namespace DropMeter
     html, body {
     background: transparent;
     color: white;
+    -webkit-app-region: drag;
+    
 }
 </style>
 </body>
-</html>", "http://demoplugin.int/");
-            this.WebView.ShowDevTools();
+</html>", "http://demoplugin.int/");*/
+
+            //this.WebView.ShowDevTools();
+
         }
 
         private void EnterWidgetMode(object sender, RoutedEventArgs e)

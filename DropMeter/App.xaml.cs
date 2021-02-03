@@ -13,5 +13,15 @@ namespace DropMeter
     /// </summary>
     public partial class App : Application
     {
+        [STAThread]
+        public static void Main()
+        {
+            var application = new App();
+            application.InitializeComponent();
+            PluginLoader.LoadPlugins();
+            PluginLoader.InitializePlugins();
+            application.Run();
+            
+        }
     }
 }

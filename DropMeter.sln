@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropMeter", "DropMeter\Drop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebView2Test", "WebView2Test\WebView2Test.csproj", "{8CB91F9B-C8C4-49B5-AFB4-6D6D4168ED11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropMeter.PluginInterface", "DropMeter.PluginInterface\DropMeter.PluginInterface.csproj", "{887AE955-2C93-4E95-874F-9991B6286756}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "POCs", "POCs", "{6109B309-64FB-46B1-8541-077FB1E65A94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallpaperEngineButBetter", "WallpaperEngineButBetter\WallpaperEngineButBetter.csproj", "{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{824F18C2-69B5-4835-9F28-6C21905487A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropMeter.WebNowPlaying", "DropMeter.WebNowPlaying\DropMeter.WebNowPlaying.csproj", "{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,9 +41,38 @@ Global
 		{8CB91F9B-C8C4-49B5-AFB4-6D6D4168ED11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CB91F9B-C8C4-49B5-AFB4-6D6D4168ED11}.Release|x64.ActiveCfg = Release|Any CPU
 		{8CB91F9B-C8C4-49B5-AFB4-6D6D4168ED11}.Release|x64.Build.0 = Release|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Debug|x64.Build.0 = Debug|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Release|x64.ActiveCfg = Release|Any CPU
+		{887AE955-2C93-4E95-874F-9991B6286756}.Release|x64.Build.0 = Release|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Debug|x64.Build.0 = Debug|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Release|x64.ActiveCfg = Release|Any CPU
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75}.Release|x64.Build.0 = Release|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Debug|x64.Build.0 = Debug|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|x64.ActiveCfg = Release|Any CPU
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8CB91F9B-C8C4-49B5-AFB4-6D6D4168ED11} = {6109B309-64FB-46B1-8541-077FB1E65A94}
+		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75} = {6109B309-64FB-46B1-8541-077FB1E65A94}
+		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC} = {824F18C2-69B5-4835-9F28-6C21905487A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A71B154E-B321-4048-A77F-871677BBDA3C}

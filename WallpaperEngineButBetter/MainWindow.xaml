@@ -1,0 +1,16 @@
+﻿<Window x:Class="WallpaperEngineButBetter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WallpaperEngineButBetter"
+        mc:Ignorable="d"
+        Title="Wallpaper Engine, but better." Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Button Content="GO!!" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="772" Click="Button_Click"/>
+        <ComboBox x:Name="ProcessChooser" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="738"/>
+        <CheckBox x:Name="AboveIcons" Content="Should be Above the Icons?" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Refresh" Content="O" HorizontalAlignment="Left" Margin="753,81,0,0" VerticalAlignment="Top" Width="29" Click="Refresh_Click"/>
+
+    </Grid>
+</Window>

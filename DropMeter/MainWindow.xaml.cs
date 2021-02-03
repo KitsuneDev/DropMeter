@@ -50,7 +50,7 @@ namespace DropMeter
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HTMLWidget widget = new HTMLWidget(false);
+            HTMLWidget widget = new HTMLWidget("test",true);
             widget.Show();
         }
     }
