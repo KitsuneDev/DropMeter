@@ -63,7 +63,7 @@ namespace DropMeter.WebNowPlaying
             var msg = e.Data;
             Console.WriteLine(e.Data);
             var datas = msg.Split(':');
-            WebNowPlaying.helper.BroadcastMessage(datas[0], datas.Skip(1).ToArray());
+            WebNowPlaying.helper.BroadcastMessage(datas[0], string.Join(":", datas.Skip(1)));
             Send(msg);
         
     }

@@ -1,14 +1,21 @@
-interface DropMeter {
-    registerCallback: (pluginId: string, messageId: string, callback: (data: any)=>void) => void;
+export interface IDropMeter {
+    registerCallback<T, T2>(pluginId: string, callback: (data: PluginMessage<T,T2>)=>void) : void;
     sendToPlugin: ()=>void;
 }
 
 
-if((window as any).DropMeter == null){
-    (window as any).CefSharp.CefSharp.BindObjectAsync("DropMeter")
+export interface PluginMessage<MESG = string, DATA = any> {
+    messageID: MESG;
+    data: DATA
 }
 
-declare var DropMeter: DropMeter;
+async function GetDropMeter(){
+if((window as any).DropMeter == null){
+    await (window as any).CefSharp.BindObjectAsync("DropMeter")
+}
+return (window as any).DropMeter as IDropMeter;
+}
+//declare var DropMeter: IDropMeter;
 
-export {DropMeter};
+export const DropMeter = GetDropMeter;
 

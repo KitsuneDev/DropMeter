@@ -17,18 +17,26 @@ namespace DropMeter
         {
             this.Plugin = Plugin;
         }
-        public void BroadcastMessage(string id, params object[] parameters)
+        public void BroadcastMessage(string id, object parameters)
         {
             //TODO
             foreach(var widget in JSComContextHelper.instances.keyValuePairs)
             {
-                widget.Value.TransmitEvent(Plugin.Slug, id, parameters);
+                widget.Value.TransmitEvent(Plugin.Slug, new PluginMessage()
+                {
+                    messageID = id,
+                    data = parameters
+                });
             }
         }
 
-        public void SendToView(string viewId, string id, object[] parameters)
+        public void SendToView(string viewId, string id, object parameters)
         {
-            JSComContextHelper.instances[viewId].TransmitEvent(Plugin.Slug, id, parameters);
+            JSComContextHelper.instances[viewId].TransmitEvent(Plugin.Slug, new PluginMessage()
+            {
+                messageID = id,
+                data = parameters
+            });
         }
 
         public event MessageHandler<IMessageReceivedData> OnMessageReceived;

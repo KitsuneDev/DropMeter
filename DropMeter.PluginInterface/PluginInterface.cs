@@ -35,17 +35,23 @@ namespace DropMeter.PluginInterface
         /// </summary>
         /// <param name="id"></param>
         /// <param name="parameters"></param>
-        void BroadcastMessage(string id, object[] parameters);
+        void BroadcastMessage(string id, object parameters);
         /// <summary>
         /// Sends the message from PLG to all the VIEWs
         /// </summary>
         /// <param name="viewId"></param>
         /// <param name="id"></param>
         /// <param name="parameters"></param>
-        void SendToView(string viewId, string id, object[] parameters);
+        void SendToView(string viewId, string id, object parameters);
         /// <summary>
         /// Messages sent from VIEWs to PLG.
         /// </summary>
         event MessageHandler<IMessageReceivedData> OnMessageReceived;
+    }
+
+    public struct PluginMessage
+    {
+        public string messageID;
+        public object data;
     }
 }

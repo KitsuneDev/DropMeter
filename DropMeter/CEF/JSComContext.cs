@@ -22,13 +22,22 @@ namespace DropMeter.CEF
             // Do something really cool here.
         }
 
-        internal ObjectRepository<string, Dictionary<string, IJavascriptCallback>> EventHandlers = new ObjectRepository<string, Dictionary<string, IJavascriptCallback>>();
+        internal ObjectRepository<string, List<IJavascriptCallback>> EventHandlers = new ObjectRepository<string, List<IJavascriptCallback>>();
 
-        internal async void TransmitEvent(string pluginSlug, string messageID, params object[] data)
+        
+        internal async void TransmitEvent(string pluginSlug, PluginMessage message)
         {
             try
             {
-                await EventHandlers[pluginSlug][messageID].ExecuteAsync(data);
+                foreach (var handler in EventHandlers[pluginSlug])
+                {
+                    if(handler.CanExecute)
+                    await handler.ExecuteAsync(message);
+                    else
+                    {
+                        //TODO
+                    }
+                }
             }
             catch (KeyNotFoundException)
             {
@@ -36,9 +45,9 @@ namespace DropMeter.CEF
             }
         }
 
-        public void RegisterCallback(string pluginSlug, string messageID, IJavascriptCallback javascriptCallback)
+        public void RegisterCallback(string pluginSlug, IJavascriptCallback javascriptCallback)
         {
-            EventHandlers[pluginSlug][messageID] = javascriptCallback;
+            EventHandlers[pluginSlug].Add(javascriptCallback);
             /*const int taskDelay = 1500;
 
             Task.Run(async () =>

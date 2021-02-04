@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DropMeter"
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="HTMLWidget" Height="450" Width="800" Loaded="Window_Loaded" MouseDown="Window_MouseDown" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None">
+        Title="HTMLWidget" Height="450" Width="800" Loaded="Window_Loaded" MouseDown="Window_MouseDown" Background="{x:Null}" >
     <Grid>
         <wpf:ChromiumWebBrowser x:Name="WebView" IsBrowserInitializedChanged="WebView_IsBrowserInitializedChanged" FrameLoadEnd="WebView_FrameLoadEnd"/>
         <Grid x:Name="WidgetMove" Background="White" Margin="0">
