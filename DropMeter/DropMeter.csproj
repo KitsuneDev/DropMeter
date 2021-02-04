@@ -2,6 +2,9 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{996DDEB2-E299-4A7E-AEF0-5737AB60D696}</ProjectGuid>
@@ -82,6 +85,7 @@
     <Compile Include="CEF\DragDropHandler.cs" />
     <Compile Include="CEF\FileProtocolHandler.cs" />
     <Compile Include="CEF\JSComContext.cs" />
+    <Compile Include="CEF\ObjectRepository.cs" />
     <Compile Include="CloseMenuHandler.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Win32Wrapper.cs" />

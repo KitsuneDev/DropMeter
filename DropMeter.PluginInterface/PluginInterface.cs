@@ -31,11 +31,18 @@ namespace DropMeter.PluginInterface
     public interface IPluginHelper
     {
         /// <summary>
-        /// Sends the message from PLG to the VIEWs
+        /// Sends the message from PLG to all the VIEWs
         /// </summary>
         /// <param name="id"></param>
         /// <param name="parameters"></param>
-        void EmitMessage(string id, object parameters);
+        void BroadcastMessage(string id, object[] parameters);
+        /// <summary>
+        /// Sends the message from PLG to all the VIEWs
+        /// </summary>
+        /// <param name="viewId"></param>
+        /// <param name="id"></param>
+        /// <param name="parameters"></param>
+        void SendToView(string viewId, string id, object[] parameters);
         /// <summary>
         /// Messages sent from VIEWs to PLG.
         /// </summary>

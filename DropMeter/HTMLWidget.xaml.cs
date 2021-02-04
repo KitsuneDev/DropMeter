@@ -26,7 +26,7 @@ namespace DropMeter
     /// </summary>
     public partial class HTMLWidget : Window
     {
-        public string PluginName;
+        public string WidgetName;
         /************ win32 interop stuff ****************/
         [DllImport("user32.dll", SetLastError = true)]
         static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
@@ -42,13 +42,15 @@ namespace DropMeter
 
         const int GWL_HWNDPARENT = -8;
 
-        public HTMLWidget(string PluginName, bool attachToDesktop = true)
+        public HTMLWidget(string widgetName, bool attachToDesktop = true)
         {
+            
+
             this.attachToDesktop = attachToDesktop;
             InitializeComponent();
             WebView.MenuHandler = new CloseMenuHandler(this);
             WebView.DragHandler = new DragDropHandler();
-            this.PluginName = PluginName;
+            this.WidgetName = widgetName;
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -92,18 +94,7 @@ namespace DropMeter
                 }, IntPtr.Zero);
             }
             #endregion
-            var settings = new CefSettings
-            {
-                //BrowserSubprocessPath = GetCefExecutablePath()
-            };
-            settings.RegisterScheme(new CefCustomScheme
-            {
-                SchemeName = LocalFileHandlerFactory.SchemeName,
-                SchemeHandlerFactory = new LocalFileHandlerFactory(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./widgets/")) //TODO
-            });
             
-            Cef.Initialize(settings);
-
 
             EnterWidgetMode(null, null);
 
@@ -123,17 +114,18 @@ namespace DropMeter
                 if (e.ObjectName == "DropMeter")
                 {
                     BindingOptions bindingOptions = null; //Binding options is an optional param, defaults to null
-                    bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects,
+                    bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects
 
-                   // bindingOptions = new BindingOptions { Binder = new MyCustomBinder() }); //No camelcase of names and specify a custom binder
+                    //bindingOptions = new BindingOptions { Binder = new MyCustomBinder() }); //Specify a custom binder
+                    repo.NameConverter = null; //No CamelCase of Javascript Names
                     //For backwards compatability reasons the default NameConverter doesn't change the case of the objects returned from methods calls.
                     //https://github.com/cefsharp/CefSharp/issues/2442
                     //Use the new name converter to bound object method names and property names of returned objects converted to camelCase
                     repo.NameConverter = new CamelCaseJavascriptNameConverter();
-                    repo.Register("DropMeter", new JSComContext(), isAsync: false, options: bindingOptions);
+                    repo.Register("DropMeter", JSComContextHelper.instances[WidgetName], isAsync: true, options: bindingOptions);
                 }
             };
-            this.WebView.Address = $"{LocalFileHandlerFactory.SchemeName}://{PluginName}/index.html";
+            this.WebView.Address = $"{LocalFileHandlerFactory.SchemeName}://{WidgetName}/index.html";
             /*this.WebView.LoadHtml(@"<!DOCTYPE html>
 <html>
 <body>
@@ -169,6 +161,14 @@ namespace DropMeter
                 WidgetMove.Visibility = Visibility.Visible;
                 WebView.Visibility = Visibility.Hidden;
             });
+        }
+
+        private void WebView_FrameLoadEnd(object sender, FrameLoadEndEventArgs args)
+        {
+            if (args.Frame.IsMain)
+            {
+                args.Frame.ExecuteJavaScriptAsync("CefSharp.BindObjectAsync(\"DropMeter\");");
+            }
         }
     }
 }

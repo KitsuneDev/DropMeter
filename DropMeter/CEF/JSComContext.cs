@@ -4,22 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CefSharp;
+using DropMeter.PluginInterface;
 
 namespace DropMeter.CEF
 {
+    class JSComContextHelper
+    {
+        public static ObjectRepository<string, JSComContext> instances = new ObjectRepository<string, JSComContext>();
+
+    }
     class JSComContext
     {
-        public string MyProperty { get; set; }
-        public void InvokeCallbackOnBrowser()
+        
+        
+        public void SendToPlugin()
         {
             // Do something really cool here.
         }
 
-        private Dictionary<string, Dictionary<string, IJavascriptCallback>> EventHandlers = new Dictionary<string, Dictionary<string, IJavascriptCallback>>();
+        internal ObjectRepository<string, Dictionary<string, IJavascriptCallback>> EventHandlers = new ObjectRepository<string, Dictionary<string, IJavascriptCallback>>();
 
         internal async void TransmitEvent(string pluginSlug, string messageID, params object[] data)
         {
-            await EventHandlers[pluginSlug][messageID].ExecuteAsync(data);
+            try
+            {
+                await EventHandlers[pluginSlug][messageID].ExecuteAsync(data);
+            }
+            catch (KeyNotFoundException)
+            {
+
+            }
         }
 
         public void RegisterCallback(string pluginSlug, string messageID, IJavascriptCallback javascriptCallback)

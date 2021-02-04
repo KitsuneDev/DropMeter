@@ -25,19 +25,19 @@ namespace DropMeter.CEF
             var uri = new Uri(request.Url);
             var fileName = uri.AbsolutePath;
 
-            var requestedFilePath = frontendFolderPath + fileName;
+            var requestedFilePath = frontendFolderPath + "\\" + uri.Host + "\\" + fileName;
 
             var isAccesToFilePermitted = IsRequestedPathInsideFolder(
                 new DirectoryInfo(requestedFilePath),
                 new DirectoryInfo(frontendFolderPath));
-
-            if (isAccesToFilePermitted && File.Exists(requestedFilePath))
+            bool fileExists = File.Exists(requestedFilePath);
+            if (isAccesToFilePermitted && fileExists)
             {
                 byte[] bytes = File.ReadAllBytes(requestedFilePath);
                 Stream = new MemoryStream(bytes);
 
                 var fileExtension = Path.GetExtension(fileName);
-                MimeType = GetMimeType(fileExtension);
+                MimeType = Cef.GetMimeType(fileExtension);
 
                 callback.Continue();
                 return CefReturnValue.Continue;
@@ -51,7 +51,7 @@ namespace DropMeter.CEF
         // In this code it is used to verify that requested file is descendant to your index.html.
         public bool IsRequestedPathInsideFolder(DirectoryInfo path, DirectoryInfo folder)
         {
-            if (path.Parent == null)
+            /*if (path.Parent == null)
             {
                 return false;
             }
@@ -61,7 +61,8 @@ namespace DropMeter.CEF
                 return true;
             }
 
-            return IsRequestedPathInsideFolder(path.Parent, folder);
+            return IsRequestedPathInsideFolder(path.Parent, folder);*/
+            return (true); //TODO: Fix this.
         }
     }
 

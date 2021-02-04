@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using DropMeter.CEF;
 using DropMeter.PluginInterface;
 
 namespace DropMeter
@@ -16,11 +17,20 @@ namespace DropMeter
         {
             this.Plugin = Plugin;
         }
-        public void EmitMessage(string id, object parameters)
+        public void BroadcastMessage(string id, params object[] parameters)
         {
             //TODO
+            foreach(var widget in JSComContextHelper.instances.keyValuePairs)
+            {
+                widget.Value.TransmitEvent(Plugin.Slug, id, parameters);
+            }
         }
-        
+
+        public void SendToView(string viewId, string id, object[] parameters)
+        {
+            JSComContextHelper.instances[viewId].TransmitEvent(Plugin.Slug, id, parameters);
+        }
+
         public event MessageHandler<IMessageReceivedData> OnMessageReceived;
     }
     public class PluginLoader

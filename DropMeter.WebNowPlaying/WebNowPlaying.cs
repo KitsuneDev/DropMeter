@@ -63,7 +63,7 @@ namespace DropMeter.WebNowPlaying
             var msg = e.Data;
             Console.WriteLine(e.Data);
             var datas = msg.Split(':');
-            WebNowPlaying.helper.EmitMessage(datas[0], datas.Skip(1).ToArray());
+            WebNowPlaying.helper.BroadcastMessage(datas[0], datas.Skip(1).ToArray());
             Send(msg);
         
     }
@@ -103,7 +103,7 @@ public class WebNowPlaying : DMPlugin
 
         public void Terminate()
         {
-            if (wssv != null) wssv.Stop();
+            wssv?.Stop();
         }
     }
 }
