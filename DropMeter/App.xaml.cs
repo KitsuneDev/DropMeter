@@ -33,7 +33,8 @@ namespace DropMeter
         internal static string WidgetsBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "widgets");
 
         public Mutex Mutex;
-        [STAThread]
+        
+        /*[STAThread]
         public static void Main()
         {
 
@@ -41,7 +42,7 @@ namespace DropMeter
             application.InitializeComponent();
             application.Run();
             
-        }
+        }*/
 
 
         private System.Windows.Forms.NotifyIcon _notifyIcon;
