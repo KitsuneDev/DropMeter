@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DropMeter.CEF;
 using DropMeter.PluginInterface;
+using DropMeter.PluginMgr;
+using Newtonsoft.Json;
 
 namespace DropMeter
 {
@@ -19,14 +21,22 @@ namespace DropMeter
         }
         public void BroadcastMessage(string id, object parameters)
         {
+            var data = new PluginMessage()
+            {
+                messageID = id,
+                data = parameters
+            };
+
+            var sessions = DebugSocket.instance.wssv.WebSocketServices["/pluginchannel"].Sessions;
+            sessions.Broadcast(JsonConvert.SerializeObject(new DebugMessageCapsule()
+            {
+                message = data,
+                pluginId = Plugin.Slug
+            }));
             //TODO
             foreach(var widget in JSComContextHelper.instances.keyValuePairs)
             {
-                widget.Value.TransmitEvent(Plugin.Slug, new PluginMessage()
-                {
-                    messageID = id,
-                    data = parameters
-                });
+                widget.Value.TransmitEvent(Plugin.Slug, data);
             }
         }
 

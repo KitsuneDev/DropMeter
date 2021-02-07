@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -88,6 +89,7 @@
     <Compile Include="CEF\ObjectRepository.cs" />
     <Compile Include="CloseMenuHandler.cs" />
     <Compile Include="PluginLoader.cs" />
+    <Compile Include="PluginMgr\DebugSocket.cs" />
     <Compile Include="Win32Wrapper.cs" />
     <Page Include="HTMLWidget.xaml">
       <SubType>Designer</SubType>
@@ -148,12 +150,27 @@
     <PackageReference Include="CefSharp.Wpf">
       <Version>86.0.241</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="WebSocketSharp">
+      <Version>1.0.3-rc11</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DropMeter.PluginInterface\DropMeter.PluginInterface.csproj">
       <Project>{887ae955-2c93-4e95-874f-9991b6286756}</Project>
       <Name>DropMeter.PluginInterface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

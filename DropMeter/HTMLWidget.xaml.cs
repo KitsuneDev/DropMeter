@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -18,9 +19,22 @@ using CefSharp.Internals;
 using CefSharp.JavascriptBinding;
 using CefSharp.Wpf;
 using DropMeter.CEF;
+using Newtonsoft.Json;
+using Path = System.IO.Path;
 
 namespace DropMeter
 {
+    internal class WidgetDataStore
+    {
+        [JsonProperty]
+        internal double TopPosition;
+        [JsonProperty]
+        internal double LeftPosition;
+        [JsonProperty]
+        internal double Height;
+        [JsonProperty]
+        internal double Width;
+    }
     /// <summary>
     /// Interaction logic for HTMLWidget.xaml
     /// </summary>
@@ -41,19 +55,39 @@ namespace DropMeter
         private bool attachToDesktop = true;
 
         const int GWL_HWNDPARENT = -8;
-
+        
+        internal static string DATAPATH = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ldata");
+        internal string LDataPath;
         public HTMLWidget(string widgetName, bool attachToDesktop = true)
         {
             
 
             this.attachToDesktop = attachToDesktop;
+            
             InitializeComponent();
+            LDataPath = Path.Combine(DATAPATH, widgetName + ".json");
+            if (File.Exists(LDataPath))
+            {
+
+                WidgetDataStore data = JsonConvert.DeserializeObject<WidgetDataStore>(File.ReadAllText(LDataPath));
+                this.Top = data.TopPosition;
+                this.Left = data.LeftPosition;
+                this.Width = data.Width;
+                this.Height = data.Height;
+
+            }
+            //BrowserSettings settings = new BrowserSettings();
+            //settings.WebSecurity = CefState.Disabled;
+            //settings.FileAccessFromFileUrls = CefState.Enabled;
+            //settings.UniversalAccessFromFileUrls = CefState.Enabled;
+            //WebView.BrowserSettings = settings;
+            var mmx = Cef.AddCrossOriginWhitelistEntry("widgets://test", "https", "musixmatch.com", true);
             WebView.MenuHandler = new CloseMenuHandler(this);
             WebView.DragHandler = new DragDropHandler();
             this.WidgetName = widgetName;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             #region Desktop Widget Inner Gears
             if (attachToDesktop)
@@ -94,10 +128,11 @@ namespace DropMeter
                 }, IntPtr.Zero);
             }
             #endregion
+
             
-
             EnterWidgetMode(null, null);
-
+            
+            
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -108,6 +143,7 @@ namespace DropMeter
 
         private void WebView_IsBrowserInitializedChanged(object _, DependencyPropertyChangedEventArgs dep)
         {
+            
             this.WebView.JavascriptObjectRepository.ResolveObject += (sender, e) =>
             {
                 var repo = e.ObjectRepository;
@@ -150,6 +186,22 @@ namespace DropMeter
 
         private void EnterWidgetMode(object sender, RoutedEventArgs e)
         {
+            // Sender is null if not invoked by user
+            if (sender != null)
+            {
+                Console.WriteLine("Saving Widget Data...");
+                var conf = new WidgetDataStore()
+                {
+                    Height = this.Height,
+                    Width = this.Width,
+                    TopPosition = this.Top,
+                    LeftPosition = this.Left,
+                };
+                var encoded = JsonConvert.SerializeObject(conf);
+                File.WriteAllText(LDataPath, encoded);
+            }
+
+            
             WidgetMove.Visibility = Visibility.Hidden;
             WebView.Visibility = Visibility.Visible;
         }
