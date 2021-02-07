@@ -88,8 +88,11 @@
     <Compile Include="CEF\JSComContext.cs" />
     <Compile Include="CEF\ObjectRepository.cs" />
     <Compile Include="CloseMenuHandler.cs" />
+    <Compile Include="FileHandler\DMFileHandler.cs" />
+    <Compile Include="NamedPipeManager.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="PluginMgr\DebugSocket.cs" />
+    <Compile Include="StringUtils.cs" />
     <Compile Include="Win32Wrapper.cs" />
     <Page Include="HTMLWidget.xaml">
       <SubType>Designer</SubType>
@@ -171,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Win32\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

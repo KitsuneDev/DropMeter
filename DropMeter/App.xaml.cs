@@ -6,6 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
@@ -13,7 +15,9 @@ using System.Windows.Media.Imaging;
 using CefSharp;
 using CefSharp.Wpf;
 using DropMeter.CEF;
+using DropMeter.FileHandler;
 using DropMeter.PluginMgr;
+using Westwind.Utilities;
 using Application = System.Windows.Application;
 
 namespace DropMeter
@@ -25,18 +29,34 @@ namespace DropMeter
     {
         internal static Dictionary<string, HTMLWidget> OpenWidgets = new Dictionary<string, HTMLWidget>();
         internal static List<string> AvailableWidgets = new List<string>();
-
+        internal DMFileHandler fileHandler;
         internal static string WidgetsBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "widgets");
 
+        public Mutex Mutex;
         [STAThread]
         public static void Main()
         {
+
             var application = new App();
             application.InitializeComponent();
+            application.Run();
+            
+        }
+
+
+        private System.Windows.Forms.NotifyIcon _notifyIcon;
+        private bool _isExit;
+        public NamedPipeManager namedPipe = new NamedPipeManager("DropMeter");
+
+
+        public App()
+        {
+            SingleInstanceCheck();
+            
             if (!Directory.Exists(HTMLWidget.DATAPATH)) Directory.CreateDirectory(HTMLWidget.DATAPATH);
             PluginLoader.LoadPlugins();
             PluginLoader.InitializePlugins();
-            if(DebugSocket.instance == null) DebugSocket.instance = new DebugSocket();
+            if (DebugSocket.instance == null) DebugSocket.instance = new DebugSocket();
             var settings = new CefSettings
             {
                 //BrowserSubprocessPath = GetCefExecutablePath()
@@ -54,19 +74,12 @@ namespace DropMeter
                 IsCorsEnabled = true,
                 IsSecure = true,
                 IsCSPBypassing = true,
-                
-                
+
+
             });
 
             Cef.Initialize(settings);
-            
-            application.Run();
-            
         }
-
-
-        private System.Windows.Forms.NotifyIcon _notifyIcon;
-        private bool _isExit;
 
         public void LoadWidgets()
         {
@@ -153,6 +166,7 @@ namespace DropMeter
 
         private void ExitApplication()
         {
+            
             _isExit = true;
             MainWindow?.Close();
             _notifyIcon.Dispose();
@@ -185,9 +199,80 @@ namespace DropMeter
             }
         }
 
+        public void SingleInstanceCheck()
+        {
 
-        
+            bool isOnlyInstance = false;
+            this.Mutex = new Mutex(true, @"DropMeter", out isOnlyInstance);
+            if (!isOnlyInstance)
+            {
+                string filesToOpen = " ";
+                var args = Environment.GetCommandLineArgs();
+                if (args != null && args.Length > 1)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 1; i < args.Length; i++)
+                    {
+                        sb.AppendLine(args[i]);
+                    }
+                    filesToOpen = sb.ToString();
+                }
+
+                
+                namedPipe.Write(filesToOpen);
+
+                // this exits the application                    
+                Environment.Exit(0);
+
+            }
+            else
+            {
+                namedPipe.StartServer();
+                namedPipe.ReceiveString += OpenFileFromInstance;
+            }
+        }
+
+        private void OpenFileFromInstance(string filesToOpen)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (!string.IsNullOrEmpty(filesToOpen))
+                {
+                    
+                    foreach (var file in filesToOpen.GetLines())
+                    {
+                        if (!string.IsNullOrEmpty(file))
+                        {
+                            if(fileHandler == null) fileHandler = new DMFileHandler(this);
+                            fileHandler.OpenFile(file);
+                        }
+                            
+                    }
+                    //if (lastTab != null)
+                    //    Dispatcher.InvokeAsync(() => TabControl.SelectedItem = lastTab);
+                }
+
+                /*
+                if (WindowState == WindowState.Minimized)
+                    WindowState = WindowState.Normal;
+
+                this.Topmost = true;
+                this.Activate();
+                Dispatcher.BeginInvoke(new Action(() => { this.Topmost = false; }));
+            */
+            });
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            namedPipe.StopServer();
+            base.OnExit(e);
+        }
     }
+
+    
+    
+    
 
 }
 
