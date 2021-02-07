@@ -31,7 +31,7 @@ namespace DropMeter
         internal static List<string> AvailableWidgets = new List<string>();
         internal DMFileHandler fileHandler;
         internal static string WidgetsBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "widgets");
-
+        internal static  string PluginBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
         public Mutex Mutex;
         
         /*[STAThread]

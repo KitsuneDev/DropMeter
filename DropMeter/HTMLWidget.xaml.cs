@@ -78,11 +78,11 @@ namespace DropMeter
                 this.Height = data.Height;
 
             }
-            //BrowserSettings settings = new BrowserSettings();
-            //settings.WebSecurity = CefState.Disabled;
-            //settings.FileAccessFromFileUrls = CefState.Enabled;
-            //settings.UniversalAccessFromFileUrls = CefState.Enabled;
-            //WebView.BrowserSettings = settings;
+            BrowserSettings settings = new BrowserSettings();
+            settings.WebSecurity = CefState.Disabled;
+            settings.FileAccessFromFileUrls = CefState.Enabled;
+            settings.UniversalAccessFromFileUrls = CefState.Enabled;
+            WebView.BrowserSettings = settings;
             var mmx = Cef.AddCrossOriginWhitelistEntry("widgets://test", "https", "musixmatch.com", true);
             WebView.MenuHandler = new CloseMenuHandler(this);
             WebView.DragHandler = new DragDropHandler();
@@ -160,7 +160,8 @@ namespace DropMeter
                     //https://github.com/cefsharp/CefSharp/issues/2442
                     //Use the new name converter to bound object method names and property names of returned objects converted to camelCase
                     repo.NameConverter = new CamelCaseJavascriptNameConverter();
-                    repo.Register("DropMeter", JSComContextHelper.instances[WidgetName], isAsync: true, options: bindingOptions);
+                    
+                    repo.Register("DropMeter", JSComContextHelper.instances[WidgetName], options: bindingOptions);
                 }
             };
             this.WebView.Address = $"{LocalFileHandlerFactory.SchemeName}://{WidgetName}/index.html";

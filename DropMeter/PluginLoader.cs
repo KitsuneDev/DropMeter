@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
 using DropMeter.CEF;
@@ -51,47 +52,106 @@ namespace DropMeter
 
         public event MessageHandler<IMessageReceivedData> OnMessageReceived;
     }
+
+    class PluginLoadContext : AssemblyLoadContext
+    {
+        private AssemblyDependencyResolver _resolver;
+
+        public PluginLoadContext(string pluginPath)
+        {
+            _resolver = new AssemblyDependencyResolver(pluginPath);
+        }
+
+        protected override Assembly Load(AssemblyName assemblyName)
+        {
+            if (assemblyName.FullName == typeof(DMPlugin).Assembly.FullName)
+            {
+                return null;
+            }
+            string assemblyPath = _resolver.ResolveAssemblyToPath(assemblyName);
+            if (assemblyPath != null)
+            {
+                return LoadFromAssemblyPath(assemblyPath);
+            }
+
+            return null;
+        }
+
+        protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
+        {
+            string libraryPath = _resolver.ResolveUnmanagedDllToPath(unmanagedDllName);
+            if (libraryPath != null)
+            {
+                return LoadUnmanagedDllFromPath(libraryPath);
+            }
+
+            return IntPtr.Zero;
+        }
+    }
+
     public class PluginLoader
     {
         public static List<DMPlugin> Plugins { get; set; }
-
-        public static void LoadPlugins()
+        public static List<Assembly> PluginASM { get; private set; }
+        static IEnumerable<DMPlugin> InitializePlugin(Assembly assembly)
         {
-            Plugins = new List<DMPlugin>();
+            int count = 0;
 
-            //Load the DLLs from the Plugins directory
-            if (Directory.Exists("plugins"))
+            foreach (Type type in assembly.GetTypes())
             {
-                string[] files = Directory.GetFiles("plugins");
-                foreach (string file in files)
+                var pluginFQDN = type.Module.FullyQualifiedName;
+                var modelFQDN = typeof(DMPlugin).Module.FullyQualifiedName;
+                Console.WriteLine($"Plugin Injector: {pluginFQDN}/{modelFQDN}");
+                if (typeof(DMPlugin).IsAssignableFrom(type))
                 {
-                    if (file.EndsWith(".dll"))
+                    DMPlugin result = Activator.CreateInstance(type) as DMPlugin;
+                    if (result != null)
                     {
-                        Assembly.LoadFile(Path.GetFullPath(file));
+                        result.Initialize(new PluginHelper(result));
+                        count++;
+                        yield return result;
                     }
                 }
             }
 
-            Type interfaceType = typeof(DMPlugin);
-            //Fetch all types that implement the interface IPlugin and are a class
-            Type[] types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(a => a.GetTypes())
-                .Where(p => interfaceType.IsAssignableFrom(p) && p.IsClass)
-                .ToArray();
-            foreach (Type type in types)
+            if (count == 0)
             {
-                //Create a new instance of all found types
-                Plugins.Add((DMPlugin)Activator.CreateInstance(type));
+                /*string availableTypes = string.Join(",", assembly.GetTypes().Select(t => t.FullName));
+                throw new ApplicationException(
+                    $"Can't find any type which implements DMPlugin in {assembly} from {assembly.Location}.\n" +
+                    $"Available types: {availableTypes}");*/
             }
+        }
+
+        public static void LoadPlugins()
+        {
+            Plugins = new List<DMPlugin>();
+            PluginASM = new List<Assembly>();
+            //Load the DLLs from the Plugins directory
+            if (Directory.Exists(App.PluginBase))
+            {
+                var loadContext = new PluginLoadContext(App.PluginBase);
+                string[] files = Directory.GetFiles(App.PluginBase);
+                foreach (string file in files)
+                {
+                    if (file.EndsWith(".dll"))
+                    {
+                        PluginASM.Add(loadContext.LoadFromAssemblyPath(file));
+                        
+
+                    }
+                }
+            }
+
+            
         }
 
         public static void InitializePlugins()
         {
-            foreach (var plugin in Plugins)
+            foreach (var asm in PluginASM)
             {
-                plugin.Initialize(new PluginHelper(plugin));
+                Plugins.AddRange(InitializePlugin(asm));
             }
-            Console.WriteLine("Loaded all plugins.");
         }
     }
 }

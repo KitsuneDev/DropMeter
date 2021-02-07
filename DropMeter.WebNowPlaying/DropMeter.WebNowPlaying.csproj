@@ -5,9 +5,13 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RootNamespace>DropMeter.WebNowPlaying</RootNamespace>
     <AssemblyName>DropMeter.WebNowPlaying</AssemblyName>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DropMeter.PluginInterface\DropMeter.PluginInterface.csproj"/>
+    <ProjectReference Include="..\DropMeter.PluginInterface\DropMeter.PluginInterface.csproj">
+      <Private>false</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="WebSocketSharp-netstandard">

@@ -34,18 +34,7 @@
     <ProjectReference Include="..\DropMeter.PluginInterface\DropMeter.PluginInterface.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="cef.redist.x64">
-      <Version>86.0.24</Version>
-    </PackageReference>
-    <PackageReference Include="cef.redist.x86">
-      <Version>86.0.24</Version>
-    </PackageReference>
-    <PackageReference Include="CefSharp.Common">
-      <Version>86.0.241</Version>
-    </PackageReference>
-    <PackageReference Include="CefSharp.Wpf">
-      <Version>86.0.241</Version>
-    </PackageReference>
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="87.1.132" />
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
