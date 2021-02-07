@@ -58,6 +58,14 @@ namespace DropMeter
         
         internal static string DATAPATH = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ldata");
         internal string LDataPath;
+
+        public ChromiumWebBrowser WidgetWebView
+        {
+            get
+            {
+                return this.WebView;
+            }
+        }
         public HTMLWidget(string widgetName, bool attachToDesktop = true)
         {
             

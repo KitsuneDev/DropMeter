@@ -117,7 +117,7 @@ namespace DropMeter
                 ToolStripMenuItem menu;
                 //_notifyIcon.ContextMenuStrip.Items.Add("Manage: " + widget.Key).Click += (s, e) => widget.Value.EnterMoveMode();
                 var iconPath = Path.Combine(WidgetsBase, widget.Key, "favicon.ico");
-                var menuTitle = $"Widget: ${widget.Key}";
+                var menuTitle = $"Widget: {widget.Key}";
                 if (File.Exists(iconPath))
                 {
                     Icon icoFile = new Icon(iconPath);
@@ -129,6 +129,7 @@ namespace DropMeter
                 menu.DropDown = new ToolStripDropDown();
 
                 menu.DropDown.Items.Add("Enter Management Mode").Click += (s, e) => widget.Value.EnterMoveMode();
+                menu.DropDown.Items.Add("Open DevTools").Click += (sender, args) => widget.Value.WebView.ShowDevTools();
                 menu.DropDown.Items.Add("Unload").Click += (s, e) => widget.Value.Close();
 
 
@@ -153,7 +154,7 @@ namespace DropMeter
         private void ExitApplication()
         {
             _isExit = true;
-            MainWindow.Close();
+            MainWindow?.Close();
             _notifyIcon.Dispose();
             _notifyIcon = null;
             Current.Shutdown(0);
@@ -180,7 +181,7 @@ namespace DropMeter
             if (!_isExit)
             {
                 e.Cancel = true;
-                MainWindow.Hide(); // A hidden window can be shown again, a closed one not
+                MainWindow?.Hide(); // A hidden window can be shown again, a closed one not
             }
         }
 
