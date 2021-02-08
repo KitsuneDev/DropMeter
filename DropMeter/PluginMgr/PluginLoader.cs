@@ -146,6 +146,17 @@ namespace DropMeter
             
         }
 
+        public static void ReloadPlugins()
+        {
+            foreach (var plugin in Plugins)
+            {
+                plugin.Terminate();
+            }
+            Plugins = new List<DMPlugin>();
+            PluginASM = new List<Assembly>();
+            LoadPlugins();
+        }
+
         public static void InitializePlugins()
         {
             foreach (var asm in PluginASM)

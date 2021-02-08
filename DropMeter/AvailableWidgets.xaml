@@ -1,0 +1,40 @@
+﻿<Page x:Class="DropMeter.AvailableWidgets"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DropMeter"
+      DataContext="{Binding Source={x:Static local:App.widgetLoader}, UpdateSourceTrigger=PropertyChanged}"
+      xmlns:pluginMgr="clr-namespace:DropMeter.PluginMgr"
+      xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AvailableWidgets" Background="White">
+    <Page.Resources>
+        <CollectionViewSource x:Key="availableWidgets" Source="{Binding Widgets, UpdateSourceTrigger=PropertyChanged }" Filter="FilterCollection"  >
+        </CollectionViewSource>
+    </Page.Resources>
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" x:Name="availableList" Margin="10,10,0,10" HorizontalAlignment="Left" Width="400" ItemsSource="{Binding Source={StaticResource availableWidgets}}">
+            
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <TextBlock  DataContext="{Binding Value}" Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" Width="370">
+            <Button x:Name="LoadWidget" Content="Load Widget
+" Margin="0,10,10,0" VerticalAlignment="Top" Click="LoadWidget_OnClick"/>
+            <Button Content="Save Configuration" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="ButtonBase_OnClick"/>
+        </Grid>
+
+
+
+    </Grid>
+</Page>

@@ -18,11 +18,11 @@ namespace DropMeter.FileHandler
     public class ExtensionManifest
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public ManifestType ExtensionType;
-        public int ManifestVersion = 1;
-        public string Name;
-        public string Slug;
-        public string[] RequiredPlugins;
-        public string[] RequiredCors;
+        public ManifestType ExtensionType { get; set; }
+        public int ManifestVersion { get; set; } = 1;
+        public string Name { get; set; }
+        public string Slug { get; set; }
+        public string[] RequiredPlugins { get; set; }
+        public string[] RequiredCors { get; set; }
     }
 }

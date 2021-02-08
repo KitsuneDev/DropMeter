@@ -17,6 +17,7 @@ using CefSharp.Wpf;
 using DropMeter.CEF;
 using DropMeter.FileHandler;
 using DropMeter.PluginMgr;
+
 using Westwind.Utilities;
 using Application = System.Windows.Application;
 
@@ -27,11 +28,12 @@ namespace DropMeter
     /// </summary>
     public partial class App : Application
     {
-        internal static Dictionary<string, HTMLWidget> OpenWidgets = new Dictionary<string, HTMLWidget>();
-        internal static List<string> AvailableWidgets = new List<string>();
+        
+        
         internal DMFileHandler fileHandler;
         internal static string WidgetsBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "widgets");
-        internal static  string PluginBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
+        internal static string PluginBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
+        public static WidgetLoader widgetLoader = new WidgetLoader();
         public Mutex Mutex;
         
         /*[STAThread]
@@ -54,6 +56,9 @@ namespace DropMeter
         {
             SingleInstanceCheck();
             
+
+
+
             if (!Directory.Exists(HTMLWidget.DATAPATH)) Directory.CreateDirectory(HTMLWidget.DATAPATH);
             PluginLoader.LoadPlugins();
             PluginLoader.InitializePlugins();
@@ -82,31 +87,14 @@ namespace DropMeter
             Cef.Initialize(settings);
         }
 
-        public void LoadWidgets()
-        {
-            foreach (var widget in Directory.EnumerateDirectories(WidgetsBase))
-            {
-                if (File.Exists(Path.Combine(widget, "index.html")))
-                {
-                    var wn = new DirectoryInfo(widget).Name;
-                    AvailableWidgets.Add(wn);
-                    var view = new HTMLWidget(wn, true);
-                    view.Show();
-                    OpenWidgets.Add(wn, view);
-                }
-                else
-                {
-                    Console.WriteLine($"Widget at {widget} has no Entrypoint! Skipping.");
-                }
-            }
-        }
+        
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             MainWindow = new MainWindow();
             MainWindow.Closing += MainWindow_Closing;
             
-            LoadWidgets();
+            widgetLoader.LoadWidgets();
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
@@ -116,17 +104,17 @@ namespace DropMeter
             CreateContextMenu();
         }
 
-        private void CreateContextMenu()
+        internal void CreateContextMenu()
         {
             _notifyIcon.ContextMenuStrip =
                 new System.Windows.Forms.ContextMenuStrip();
             _notifyIcon.ContextMenuStrip.Items.Add("Manage DropMeter").Click += (s, e) => ShowMainWindow();
             _notifyIcon.ContextMenuStrip.Items.Add("-");
-            if (OpenWidgets.Count == 0)
+            if (widgetLoader.OpenWidgets.Count() == 0)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add("No Widgets Loaded");
             }
-            foreach (var widget in OpenWidgets)
+            foreach (var widget in widgetLoader.OpenWidgets)
             {
                 ToolStripMenuItem menu;
                 //_notifyIcon.ContextMenuStrip.Items.Add("Manage: " + widget.Key).Click += (s, e) => widget.Value.EnterMoveMode();
@@ -152,16 +140,20 @@ namespace DropMeter
 
             }
             _notifyIcon.ContextMenuStrip.Items.Add("-");
+            
             _notifyIcon.ContextMenuStrip.Items.Add("Reload Widgets").Click += (s, e) =>
             {
-                foreach (var widget in OpenWidgets)
+                foreach (var widget in widgetLoader.OpenWidgets)
                 {
                     widget.Value.Close();
                     
                 }
-                OpenWidgets = new Dictionary<string, HTMLWidget>();
-                LoadWidgets();
+
+                widgetLoader.OpenWidgets.Clear();
+                
+                widgetLoader.LoadWidgets();
             };
+            _notifyIcon.ContextMenuStrip.Items.Add("Reload Plugins").Click += (s,e) => PluginLoader.ReloadPlugins();
             _notifyIcon.ContextMenuStrip.Items.Add("Shutdown").Click += (s, e) => ExitApplication();
         }
 

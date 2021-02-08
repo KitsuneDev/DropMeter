@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DropMeter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" >
+        Title="DropMeter" Height="450" Width="800" >
     <Grid>
-        <Button Content="Instantiate Test Widget" HorizontalAlignment="Left" Margin="323,192,0,0" VerticalAlignment="Top" Width="204" Click="Button_Click"/>
-
+        <TabControl>
+            <TabItem Header="Available Widgets">
+                <Frame Source="AvailableWidgets.xaml"></Frame>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
