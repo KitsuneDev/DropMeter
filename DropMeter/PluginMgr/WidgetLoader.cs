@@ -18,7 +18,7 @@ namespace DropMeter.PluginMgr
     {
         public ObservableDictionary<string, HTMLWidget> OpenWidgets { get; set; } = new ObservableDictionary<string, HTMLWidget>();
         public ObservableDictionary<string, ExtensionManifest> Widgets { get; set; } = new ObservableDictionary<string, ExtensionManifest>();
-        internal string LOADED_PATH = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "loaded.json");
+        internal string LOADED_PATH = System.IO.Path.Combine(App.BASE, "loaded.json");
 
         public void SaveWidgetConfig()
         {

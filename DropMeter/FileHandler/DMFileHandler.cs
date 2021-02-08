@@ -38,11 +38,12 @@ namespace DropMeter.FileHandler
                     var hasPerm = permAsk.ShowDialog();
                     if (hasPerm == true)
                     {
-                        var baseDir = (manifest.ExtensionType == ManifestType.Plugin) ? App.PluginBase : App.WidgetsBase;
+                        var isPlugin = (manifest.ExtensionType == ManifestType.Plugin);
+                        var baseDir = isPlugin ? App.PluginBase : App.WidgetsBase;
                         
-                        var target = Path.Combine(baseDir, manifest.Slug);
+                        var target = isPlugin ? baseDir : Path.Combine(baseDir, manifest.Slug);
                         var isUpdate = Directory.Exists(target);
-                        if (isUpdate)
+                        if (isUpdate&& !isPlugin)
                         {
                             var shouldReplace = MessageBox.Show(
                                 $"The {manifest.ExtensionType.ToString()} appears to be already installed. Would you like to replace it?", "Duplicate Found", MessageBoxButton.YesNo, MessageBoxImage.Question);

@@ -31,8 +31,11 @@ namespace DropMeter
         
         
         internal DMFileHandler fileHandler;
-        internal static string WidgetsBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "widgets");
-        internal static string PluginBase = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
+
+        public static string BASE = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "DropMeter");
+        internal static string WidgetsBase = System.IO.Path.Combine(BASE, "widgets");
+        internal static string PluginBase = System.IO.Path.Combine(BASE, "plugins");
         public static WidgetLoader widgetLoader = new WidgetLoader();
         public Mutex Mutex;
         
@@ -55,9 +58,10 @@ namespace DropMeter
         public App()
         {
             SingleInstanceCheck();
-            
 
-
+            if (!Directory.Exists(BASE)) Directory.CreateDirectory(BASE);
+            if (!Directory.Exists(WidgetsBase)) Directory.CreateDirectory(WidgetsBase);
+            if (!Directory.Exists(PluginBase)) Directory.CreateDirectory(PluginBase);
 
             if (!Directory.Exists(HTMLWidget.DATAPATH)) Directory.CreateDirectory(HTMLWidget.DATAPATH);
             PluginLoader.LoadPlugins();
@@ -66,7 +70,7 @@ namespace DropMeter
             var settings = new CefSettings
             {
                 //BrowserSubprocessPath = GetCefExecutablePath()
-                CachePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "cache"),
+                CachePath = System.IO.Path.Combine(App.BASE, "cache"),
                 CefCommandLineArgs =
                 {
                     {"disable-web-security", "true"}
@@ -94,13 +98,13 @@ namespace DropMeter
             MainWindow = new MainWindow();
             MainWindow.Closing += MainWindow_Closing;
             
-            widgetLoader.LoadWidgets();
+            
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
             _notifyIcon.Icon = DropMeter.Properties.Resources.Icon;
             _notifyIcon.Visible = true;
-
+            widgetLoader.LoadWidgets();
             CreateContextMenu();
         }
 

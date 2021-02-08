@@ -50,7 +50,7 @@ namespace DropMeter
 
         const int GWL_HWNDPARENT = -8;
         
-        internal static string DATAPATH = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ldata");
+        internal static string DATAPATH = System.IO.Path.Combine(App.BASE, "ldata");
         internal string LDataPath;
 
         public ChromiumWebBrowser WidgetWebView

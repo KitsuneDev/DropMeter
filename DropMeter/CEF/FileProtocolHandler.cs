@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CefSharp;
 
@@ -16,7 +17,7 @@ namespace DropMeter.CEF
 
         public LocalFileHandler(string path)
         {
-            frontendFolderPath = path; //Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "./bundle/");
+            frontendFolderPath = path; //Path.Combine(App.BASE, "./bundle/");
         }
 
         // Process request and craft response.
@@ -24,9 +25,17 @@ namespace DropMeter.CEF
         {
             var uri = new Uri(request.Url);
             var fileName = uri.AbsolutePath;
+            var filematch = new Regex("\\.(.{1,5})");
+            if (!filematch.IsMatch(fileName))
+            {
+                fileName = "index.html";
+            }
+            var requestedFilePath = (frontendFolderPath + "\\" + uri.Host + "\\" + fileName).Split('?')[0];
+            var clearURL = new Regex("index.html(.*)");
+            requestedFilePath = clearURL.Replace(requestedFilePath, "index.html");
 
-            var requestedFilePath = frontendFolderPath + "\\" + uri.Host + "\\" + fileName;
-
+            
+            
             var isAccesToFilePermitted = IsRequestedPathInsideFolder(
                 new DirectoryInfo(requestedFilePath),
                 new DirectoryInfo(frontendFolderPath));

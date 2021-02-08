@@ -1,0 +1,8 @@
+{
+  "ExtensionType": "Plugin",
+  "ManifestVersion": 1,
+  "Name": "WebNowPlaying",
+  "Slug": "webnowplaying",
+  "RequiredPlugins": [],
+  "RequiredCors":  [] 
+}

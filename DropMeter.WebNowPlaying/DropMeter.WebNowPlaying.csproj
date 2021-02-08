@@ -18,5 +18,10 @@
       <Version>1.0.1</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
 
