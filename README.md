@@ -14,6 +14,10 @@ Think Rainmeter, but with richer and easier to make widgets.
 I wouldn't say a _replacement_, per see. Rainmeter was initially releasen back in 2001, and it excels at rendering widgets with low resource usage. However, times have changed, and with the new design trends, many crave for more interactive, responsive and intelligent widgets. That's where DropMeter comes in.
 I personally like to combine both, running clocks and audio visualizers on RainMeter and my fancy things on DropMeter.
 
+## Is there any advantage of combining it with Rainmeter, then?
+
+Apart from having a really fancy desktop? Yes, there actually is. We are working on a way to enable complete RainMeter compatibility! Which means that, when a plugin is not available, but you have it installed in RainMeter, it will be able to load it! (I am still working on that feature, so It's not published yet, but it soon will be)
+
 ## Can I do (insert fancy rainmeter widget feature here)?
 
 Probably yes! But if you cannot, don't worry, we are paving the way to enable you to do it.
