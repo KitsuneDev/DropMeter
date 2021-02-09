@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DropMeter.PluginInterface")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("DropMeter Plugin SDK. See https://github.com/GabrielTK/DropMeter/wiki for more info.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("GabrielTK")]
 [assembly: AssemblyProduct("DropMeter.PluginInterface")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
