@@ -1,7 +1,7 @@
 <img src="https://github.com/GabrielTK/DropMeter/raw/master/DropMeter/Resources/logo.png" width="100" height="100">
 
 # DropMeter
-Modern, easy to create Widgets for your Desktop.
+Modern, easy way to create Widgets for your Desktop.
 
 ## What is this?
 
