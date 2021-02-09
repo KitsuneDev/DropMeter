@@ -1,0 +1,25 @@
+{
+  "name": "dropmeter-widgetsdk",
+  "version": "1.0.0",
+  "description": "DropMeter Widget SDK. Refer to https://github.com/GabrielTK/DropMeter",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielTK/DropMeter.git"
+  },
+  "keywords": [
+    "dropmeter",
+    "widgets"
+  ],
+  "author": "GabrielTK",
+  "license": "MPL-2.0",
+  "types": "dist/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/GabrielTK/DropMeter/issues"
+  },
+  "homepage": "https://github.com/GabrielTK/DropMeter#readme"
+}
