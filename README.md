@@ -28,4 +28,6 @@ Testing on my machine with my word-by-word lyrics widget (quite heavy, uses Reac
 
 ## Cool... Where Can I get it?
 
-Happy you are excited! I am currently finishing stuff for our release, but you soon will be able to get it from a link I will post here.
+Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
+
+**If you have any doubts, feel free to contact @gab#8998 on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
