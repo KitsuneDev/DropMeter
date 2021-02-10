@@ -3,6 +3,12 @@
 # DropMeter
 Modern, easy way to create Widgets for your Desktop.
 
+## Straight to the point... Where Can I get it?
+
+Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
+
+**If you have any doubts, feel free to contact @gab#8998 on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
+
 ## What is this?
 
 DropMeter is a software that allows for desktop widgets to be built with the well-known and loved Web Stack, making use of the latest Web Technologies.
@@ -29,9 +35,3 @@ We even have a built-in WebNowPlaying Plugin, so you don't need to make that ext
 
 I wouldn't worry: Our runtime is pretty optimized, and seems to be able to handle things quite smoothly.
 Testing on my machine with my word-by-word lyrics widget (quite heavy, uses React, Framer Motion animations and an interval-based tick system) tops usage at 1% CPU and 79MB on RAM.
-
-## Cool... Where Can I get it?
-
-Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
-
-**If you have any doubts, feel free to contact @gab#8998 on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
