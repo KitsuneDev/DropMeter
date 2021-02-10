@@ -189,6 +189,7 @@ namespace DropMeter
 
         private void EnterWidgetMode(object sender, RoutedEventArgs e)
         {
+
             // Sender is null if not invoked by user
             if (sender != null)
             {
@@ -204,7 +205,7 @@ namespace DropMeter
                 File.WriteAllText(LDataPath, encoded);
             }
 
-            
+            this.ResizeMode = ResizeMode.NoResize;
             WidgetMove.Visibility = Visibility.Hidden;
             WebView.Visibility = Visibility.Visible;
         }
@@ -213,6 +214,7 @@ namespace DropMeter
         {
             Dispatcher.Invoke(() =>
             {
+                this.ResizeMode = ResizeMode.CanResizeWithGrip;
                 WidgetMove.Visibility = Visibility.Visible;
                 WebView.Visibility = Visibility.Hidden;
             });

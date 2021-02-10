@@ -9,13 +9,20 @@
         mc:Ignorable="d"
         Title="HTMLWidget" Height="450" Width="800" Loaded="Window_Loaded" MouseDown="Window_MouseDown" Background="{x:Null}" 
         AllowsTransparency="True" WindowStyle="None">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            CaptionHeight="0"
+            ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
     <Grid>
         <wpf:ChromiumWebBrowser x:Name="WebView" IsBrowserInitializedChanged="WebView_IsBrowserInitializedChanged" FrameLoadEnd="WebView_FrameLoadEnd">
             
         </wpf:ChromiumWebBrowser>
         <Grid x:Name="WidgetMove" Background="White" Margin="0">
-            <Label Content="You now may drag this widget." VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
-            <Button VerticalAlignment="Center" Content="Save Settings" Margin="314,238,314,192" Click="EnterWidgetMode"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="You now may drag and resize this widget."></Label>
+                <Button VerticalAlignment="Center" Content="Save Settings" Click="EnterWidgetMode"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
