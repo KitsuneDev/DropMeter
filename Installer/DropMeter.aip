@@ -17,10 +17,10 @@
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:logo.png" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="GabrielTK"/>
-    <ROW Property="ProductCode" Value="1033:{B98130CF-5234-485B-BED1-AFA6100B9F17} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{1C35C840-C590-4BEC-89E9-D1A2011E7DF6} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="DropMeter"/>
-    <ROW Property="ProductVersion" Value="1.0.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.2" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{520B4146-B6CD-44E6-B359-E573466627F8}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -41,34 +41,35 @@
     <ROW Directory="swiftshader_Dir" Directory_Parent="APPDIR" DefaultDir="SWIFTS~1|swiftshader"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{21B4BE51-6C91-4CF4-8EA4-EEFBF7F077CA}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{76FA5A7C-34CA-4FE9-900D-1F1A8E798DF6}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{7FA61F73-96C3-4F64-9669-F3EC8C7AA543}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{A72447CD-26A1-4B10-A6DE-2E670CCC287F}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="ApplicationDescription" ComponentId="{4B96738A-A700-4C44-8066-4B9E5EAF5EE2}" Directory_="APPDIR" Attributes="4" Condition="(VersionNT &gt;= 600)" KeyPath="ApplicationDescription"/>
     <ROW Component="C4FE6FD5B7C4D07B3A313E754A9A6A8" ComponentId="{0A96E0D7-75AD-466E-A75F-AADAB3E8E829}" Directory_="APPDIR" Attributes="4" KeyPath="C4FE6FD5B7C4D07B3A313E754A9A6A8" Options="2"/>
-    <ROW Component="CefSharp.BrowserSubprocess.Core.dll" ComponentId="{05B7A84E-4465-474A-A260-E610A7B51590}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.Core.dll"/>
-    <ROW Component="CefSharp.BrowserSubprocess.dll" ComponentId="{61CC4DF1-8812-4896-9B7B-43E8404EDBB9}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.dll"/>
-    <ROW Component="CefSharp.BrowserSubprocess.exe" ComponentId="{0E1D726A-41EC-4A20-8782-85307DC22209}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.exe"/>
-    <ROW Component="CefSharp.Core.Runtime.dll" ComponentId="{46C36FCD-B854-4E5D-95A0-EA92AE4FAB54}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.Core.Runtime.dll"/>
-    <ROW Component="CefSharp.Core.dll" ComponentId="{79B7BC8B-B1B4-44F5-B3B4-0562777DC0BD}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.Core.dll"/>
-    <ROW Component="CefSharp.Wpf.dll" ComponentId="{D51E9AC2-0E70-45D6-AB8C-B35F78E3314A}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.Wpf.dll"/>
-    <ROW Component="CefSharp.dll" ComponentId="{5BD633AF-857E-4E36-B192-6AC89D7B13B5}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.dll"/>
-    <ROW Component="DropMeter.PluginInterface.dll" ComponentId="{3A8FBD07-90B2-4558-AFFC-2AF16C74BEEA}" Directory_="APPDIR" Attributes="0" KeyPath="DropMeter.PluginInterface.dll"/>
-    <ROW Component="DropMeter.dll" ComponentId="{7F53F7F0-BE2E-410C-B3D4-8DDE893E58E9}" Directory_="APPDIR" Attributes="256" KeyPath="DropMeter.dll"/>
+    <ROW Component="CefSharp.BrowserSubprocess.Core.dll" ComponentId="{32940647-72EB-4179-8E61-C4DAE465D73E}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.Core.dll"/>
+    <ROW Component="CefSharp.BrowserSubprocess.dll" ComponentId="{3C085C94-2867-490B-871C-0CD5CC6C3D64}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.dll"/>
+    <ROW Component="CefSharp.BrowserSubprocess.exe" ComponentId="{83AB218B-03BB-42FB-A470-A9EF363B3192}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.exe"/>
+    <ROW Component="CefSharp.Core.Runtime.dll" ComponentId="{E3B956E3-06BF-4F91-8B23-222EA11485D3}" Directory_="APPDIR" Attributes="256" KeyPath="CefSharp.Core.Runtime.dll"/>
+    <ROW Component="CefSharp.Core.dll" ComponentId="{0BFD0B24-DA30-412B-A276-0EC3036CF683}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.Core.dll"/>
+    <ROW Component="CefSharp.Wpf.dll" ComponentId="{0BBA9F49-EDC3-4A8D-91B7-99843647D3C1}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.Wpf.dll"/>
+    <ROW Component="CefSharp.dll" ComponentId="{211C7D8A-F3BA-415E-8395-22063688068A}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.dll"/>
+    <ROW Component="DropMeter.PluginInterface.dll" ComponentId="{B8EC76C0-53BF-4382-948B-353B8855A02D}" Directory_="APPDIR" Attributes="0" KeyPath="DropMeter.PluginInterface.dll"/>
+    <ROW Component="DropMeter.dll" ComponentId="{CB4E6C73-5457-43B2-B621-2B90F3C4D972}" Directory_="APPDIR" Attributes="256" KeyPath="DropMeter.dll"/>
     <ROW Component="DropMeter.exe" ComponentId="{2D5D37D9-720A-4976-B758-F415F2CDD1F4}" Directory_="APPDIR" Attributes="256" KeyPath="DropMeter.exe"/>
-    <ROW Component="Ijwhost.dll" ComponentId="{751F6664-0D96-4FE6-9E29-AC566AC5F855}" Directory_="APPDIR" Attributes="256" KeyPath="Ijwhost.dll"/>
-    <ROW Component="Newtonsoft.Json.dll" ComponentId="{91F8A05B-EB12-4C78-B342-FEB94A6362A5}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="Ijwhost.dll" ComponentId="{023962C7-AED2-4B61-86F5-07B852DAE041}" Directory_="APPDIR" Attributes="256" KeyPath="Ijwhost.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{59D04E53-89AB-49F8-BC08-5D785D0908F6}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="ProductInformation" ComponentId="{34DB5107-EEBA-4D0C-97AE-A8385890FCE8}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
-    <ROW Component="am.pak" ComponentId="{C6E023E2-4CA1-42C7-8D9B-7DC505C7CC8C}" Directory_="locales_Dir" Attributes="0" KeyPath="am.pak" Type="0"/>
-    <ROW Component="chrome_elf.dll" ComponentId="{E441499B-A1A4-4A0A-85A4-537005907115}" Directory_="APPDIR" Attributes="256" KeyPath="chrome_elf.dll"/>
-    <ROW Component="d3dcompiler_47.dll" ComponentId="{BAE36098-BF10-47BB-BCCA-05B24D7307B0}" Directory_="APPDIR" Attributes="256" KeyPath="d3dcompiler_47.dll"/>
-    <ROW Component="devtools_resources.pak" ComponentId="{BB36FAF3-C9B8-472B-B7EE-D8A58A75F651}" Directory_="APPDIR" Attributes="0" KeyPath="devtools_resources.pak" Type="0"/>
-    <ROW Component="libEGL.dll" ComponentId="{9AB74C19-FD4F-492D-90AF-125E45B4B9E3}" Directory_="APPDIR" Attributes="256" KeyPath="libEGL.dll"/>
-    <ROW Component="libEGL.dll_3" ComponentId="{0A0A5E0A-599B-4580-861D-E5F416F5F18D}" Directory_="swiftshader_Dir" Attributes="256" KeyPath="libEGL.dll_3"/>
-    <ROW Component="libGLESv2.dll" ComponentId="{84FFEC76-ECEF-4630-A34A-D084834FCE6B}" Directory_="APPDIR" Attributes="256" KeyPath="libGLESv2.dll"/>
-    <ROW Component="libGLESv2.dll_3" ComponentId="{EC45ED82-4A5F-48E9-AA61-E32487FB8A0A}" Directory_="swiftshader_Dir" Attributes="256" KeyPath="libGLESv2.dll_3"/>
-    <ROW Component="libcef.dll" ComponentId="{16FD6222-8C3B-4664-BCFC-DCA96630699A}" Directory_="APPDIR" Attributes="256" KeyPath="libcef.dll"/>
-    <ROW Component="websocketsharp.dll" ComponentId="{F27C40D9-BC64-435C-BE7A-7F1FA1FCB933}" Directory_="APPDIR" Attributes="0" KeyPath="websocketsharp.dll"/>
+    <ROW Component="am.pak" ComponentId="{4B0F83C8-38FD-4D65-818F-8EC5FBF86A85}" Directory_="locales_Dir" Attributes="0" KeyPath="am.pak" Type="0"/>
+    <ROW Component="chrome_elf.dll" ComponentId="{E8AD95B8-44E2-49DF-A493-379E42A0BEC8}" Directory_="APPDIR" Attributes="256" KeyPath="chrome_elf.dll"/>
+    <ROW Component="d3dcompiler_47.dll" ComponentId="{31C29E9D-7ED4-4ED3-92F9-6FCC9D38256A}" Directory_="APPDIR" Attributes="256" KeyPath="d3dcompiler_47.dll"/>
+    <ROW Component="icudtl.dat" ComponentId="{1C1F8267-0087-462B-883F-36FA41A7189A}" Directory_="APPDIR" Attributes="0" KeyPath="icudtl.dat" Type="0"/>
+    <ROW Component="libEGL.dll" ComponentId="{7739EACC-09A6-4E49-B1CC-149B5719E7C3}" Directory_="APPDIR" Attributes="256" KeyPath="libEGL.dll"/>
+    <ROW Component="libEGL.dll_1" ComponentId="{1A844702-D4E2-475F-B3A7-1A741056321D}" Directory_="swiftshader_Dir" Attributes="256" KeyPath="libEGL.dll_1"/>
+    <ROW Component="libGLESv2.dll" ComponentId="{699E9DE1-22D4-4B2E-9F78-B77B258725DC}" Directory_="APPDIR" Attributes="256" KeyPath="libGLESv2.dll"/>
+    <ROW Component="libGLESv2.dll_1" ComponentId="{FCED2C67-991A-480C-9953-2A77F3CB6FAA}" Directory_="swiftshader_Dir" Attributes="256" KeyPath="libGLESv2.dll_1"/>
+    <ROW Component="libcef.dll" ComponentId="{111FCC1D-B996-4665-8FE0-CDC14BB6356E}" Directory_="APPDIR" Attributes="256" KeyPath="libcef.dll"/>
+    <ROW Component="updater.exe" ComponentId="{154FC4ED-97ED-4797-8D99-00AF130ED6D4}" Directory_="APPDIR" Attributes="0" KeyPath="updater.exe"/>
+    <ROW Component="websocketsharp.dll" ComponentId="{8FF09FA8-3EA6-4354-9E32-F25081028463}" Directory_="APPDIR" Attributes="0" KeyPath="websocketsharp.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="C4FE6FD5B7C4D07B3A313E754A9A6A8" Title="Visual C++ Redistributable for Visual Studio 2015-2019 x64" Description="Visual C++ Redistributable for Visual Studio 2015-2019 x64" Display="3" Level="1" Attributes="0"/>
@@ -77,27 +78,14 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="DropMeter.exe" Component_="DropMeter.exe" FileName="DROPME~1.EXE|DropMeter.exe" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="CefSharp.BrowserSubprocess.dll" Component_="CefSharp.BrowserSubprocess.dll" FileName="CEFSHA~1.DLL|CefSharp.BrowserSubprocess.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.dll" SelfReg="false"/>
-    <ROW File="CefSharp.BrowserSubprocess.exe" Component_="CefSharp.BrowserSubprocess.exe" FileName="CEFSHA~1.EXE|CefSharp.BrowserSubprocess.exe" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="CefSharp.Core.dll" Component_="CefSharp.Core.dll" FileName="CEFSHA~2.DLL|CefSharp.Core.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.Core.dll" SelfReg="false"/>
-    <ROW File="CefSharp.Core.Runtime.dll" Component_="CefSharp.Core.Runtime.dll" FileName="CEFSHA~3.DLL|CefSharp.Core.Runtime.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.Core.Runtime.dll" SelfReg="false"/>
-    <ROW File="CefSharp.dll" Component_="CefSharp.dll" FileName="CefSharp.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.dll" SelfReg="false"/>
-    <ROW File="CefSharp.Wpf.dll" Component_="CefSharp.Wpf.dll" FileName="CEFSHA~4.DLL|CefSharp.Wpf.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.Wpf.dll" SelfReg="false"/>
-    <ROW File="chrome_elf.dll" Component_="chrome_elf.dll" FileName="CHROME~1.DLL|chrome_elf.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\chrome_elf.dll" SelfReg="false"/>
-    <ROW File="d3dcompiler_47.dll" Component_="d3dcompiler_47.dll" FileName="D3DCOM~1.DLL|d3dcompiler_47.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\d3dcompiler_47.dll" SelfReg="false"/>
-    <ROW File="devtools_resources.pak" Component_="devtools_resources.pak" FileName="DEVTOO~1.PAK|devtools_resources.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\devtools_resources.pak" SelfReg="false"/>
-    <ROW File="DropMeter.dll" Component_="DropMeter.dll" FileName="DROPME~1.DLL|DropMeter.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.dll" SelfReg="false"/>
-    <ROW File="DropMeter.pdb" Component_="DropMeter.exe" FileName="DROPME~1.PDB|DropMeter.pdb" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.pdb" SelfReg="false"/>
-    <ROW File="DropMeter.PluginInterface.dll" Component_="DropMeter.PluginInterface.dll" FileName="DROPME~2.DLL|DropMeter.PluginInterface.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.PluginInterface.dll" SelfReg="false"/>
-    <ROW File="DropMeter.PluginInterface.pdb" Component_="DropMeter.PluginInterface.dll" FileName="DROPME~2.PDB|DropMeter.PluginInterface.pdb" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.PluginInterface.pdb" SelfReg="false"/>
-    <ROW File="icudtl.dat" Component_="devtools_resources.pak" FileName="icudtl.dat" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\icudtl.dat" SelfReg="false"/>
+    <ROW File="icudtl.dat" Component_="icudtl.dat" FileName="icudtl.dat" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\icudtl.dat" SelfReg="false"/>
     <ROW File="Ijwhost.dll" Component_="Ijwhost.dll" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\Ijwhost.dll" SelfReg="false"/>
     <ROW File="libcef.dll" Component_="libcef.dll" FileName="libcef.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\libcef.dll" SelfReg="false"/>
     <ROW File="libEGL.dll" Component_="libEGL.dll" FileName="libEGL.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\libEGL.dll" SelfReg="false"/>
     <ROW File="libGLESv2.dll" Component_="libGLESv2.dll" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\libGLESv2.dll" SelfReg="false"/>
     <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\Newtonsoft.Json.dll" SelfReg="false"/>
-    <ROW File="snapshot_blob.bin" Component_="devtools_resources.pak" FileName="SNAPSH~1.BIN|snapshot_blob.bin" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\snapshot_blob.bin" SelfReg="false"/>
-    <ROW File="v8_context_snapshot.bin" Component_="devtools_resources.pak" FileName="V8_CON~1.BIN|v8_context_snapshot.bin" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\v8_context_snapshot.bin" SelfReg="false"/>
+    <ROW File="snapshot_blob.bin" Component_="icudtl.dat" FileName="SNAPSH~1.BIN|snapshot_blob.bin" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\snapshot_blob.bin" SelfReg="false"/>
+    <ROW File="v8_context_snapshot.bin" Component_="icudtl.dat" FileName="V8_CON~1.BIN|v8_context_snapshot.bin" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\v8_context_snapshot.bin" SelfReg="false"/>
     <ROW File="websocketsharp.dll" Component_="websocketsharp.dll" FileName="WEBSOC~1.DLL|websocket-sharp.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\websocket-sharp.dll" SelfReg="false"/>
     <ROW File="am.pak" Component_="am.pak" FileName="am.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\locales\am.pak" SelfReg="false"/>
     <ROW File="ar.pak" Component_="am.pak" FileName="ar.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\locales\ar.pak" SelfReg="false"/>
@@ -152,20 +140,34 @@
     <ROW File="vi.pak" Component_="am.pak" FileName="vi.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\locales\vi.pak" SelfReg="false"/>
     <ROW File="zhCN.pak" Component_="am.pak" FileName="zh-CN.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\locales\zh-CN.pak" SelfReg="false"/>
     <ROW File="zhTW.pak" Component_="am.pak" FileName="zh-TW.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\locales\zh-TW.pak" SelfReg="false"/>
-    <ROW File="libEGL.dll_3" Component_="libEGL.dll_3" FileName="libEGL.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\swiftshader\libEGL.dll" SelfReg="false"/>
-    <ROW File="libGLESv2.dll_3" Component_="libGLESv2.dll_3" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\swiftshader\libGLESv2.dll" SelfReg="false"/>
-    <ROW File="cef.pak" Component_="devtools_resources.pak" FileName="cef.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef.pak" SelfReg="false"/>
-    <ROW File="cef_100_percent.pak" Component_="devtools_resources.pak" FileName="CEF_10~1.PAK|cef_100_percent.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef_100_percent.pak" SelfReg="false"/>
-    <ROW File="cef_200_percent.pak" Component_="devtools_resources.pak" FileName="CEF_20~1.PAK|cef_200_percent.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef_200_percent.pak" SelfReg="false"/>
-    <ROW File="cef_extensions.pak" Component_="devtools_resources.pak" FileName="CEF_EX~1.PAK|cef_extensions.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef_extensions.pak" SelfReg="false"/>
-    <ROW File="CefSharp.BrowserSubprocess.Core.dll" Component_="CefSharp.BrowserSubprocess.Core.dll" FileName="CEFSHA~5.DLL|CefSharp.BrowserSubprocess.Core.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.Core.dll" SelfReg="false"/>
-    <ROW File="CefSharp.BrowserSubprocess.runtimeconfig.json" Component_="devtools_resources.pak" FileName="CEFSHA~1.JSO|CefSharp.BrowserSubprocess.runtimeconfig.json" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.runtimeconfig.json" SelfReg="false"/>
-    <ROW File="DropMeter.deps.json" Component_="devtools_resources.pak" FileName="DROPME~1.JSO|DropMeter.deps.json" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.deps.json" SelfReg="false"/>
-    <ROW File="DropMeter.dll.config" Component_="devtools_resources.pak" FileName="DROPME~1.CON|DropMeter.dll.config" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.dll.config" SelfReg="false"/>
-    <ROW File="DropMeter.runtimeconfig.json" Component_="devtools_resources.pak" FileName="DROPME~2.JSO|DropMeter.runtimeconfig.json" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="libEGL.dll_1" Component_="libEGL.dll_1" FileName="libEGL.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\swiftshader\libEGL.dll" SelfReg="false"/>
+    <ROW File="libGLESv2.dll_1" Component_="libGLESv2.dll_1" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\swiftshader\libGLESv2.dll" SelfReg="false"/>
+    <ROW File="cef.pak" Component_="icudtl.dat" FileName="cef.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef.pak" SelfReg="false"/>
+    <ROW File="cef_100_percent.pak" Component_="icudtl.dat" FileName="CEF_10~1.PAK|cef_100_percent.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef_100_percent.pak" SelfReg="false"/>
+    <ROW File="cef_200_percent.pak" Component_="icudtl.dat" FileName="CEF_20~1.PAK|cef_200_percent.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef_200_percent.pak" SelfReg="false"/>
+    <ROW File="cef_extensions.pak" Component_="icudtl.dat" FileName="CEF_EX~1.PAK|cef_extensions.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\cef_extensions.pak" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.Core.dll" Component_="CefSharp.BrowserSubprocess.Core.dll" FileName="CEFSHA~1.DLL|CefSharp.BrowserSubprocess.Core.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.Core.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.dll" Component_="CefSharp.BrowserSubprocess.dll" FileName="CEFSHA~2.DLL|CefSharp.BrowserSubprocess.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.exe" Component_="CefSharp.BrowserSubprocess.exe" FileName="CEFSHA~1.EXE|CefSharp.BrowserSubprocess.exe" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="CefSharp.Core.dll" Component_="CefSharp.Core.dll" FileName="CEFSHA~3.DLL|CefSharp.Core.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.Core.dll" SelfReg="false"/>
+    <ROW File="CefSharp.Core.Runtime.dll" Component_="CefSharp.Core.Runtime.dll" FileName="CEFSHA~4.DLL|CefSharp.Core.Runtime.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.Core.Runtime.dll" SelfReg="false"/>
+    <ROW File="CefSharp.dll" Component_="CefSharp.dll" FileName="CefSharp.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.dll" SelfReg="false"/>
+    <ROW File="CefSharp.Wpf.dll" Component_="CefSharp.Wpf.dll" FileName="CEFSHA~5.DLL|CefSharp.Wpf.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.Wpf.dll" SelfReg="false"/>
+    <ROW File="chrome_elf.dll" Component_="chrome_elf.dll" FileName="CHROME~1.DLL|chrome_elf.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\chrome_elf.dll" SelfReg="false"/>
+    <ROW File="d3dcompiler_47.dll" Component_="d3dcompiler_47.dll" FileName="D3DCOM~1.DLL|d3dcompiler_47.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\d3dcompiler_47.dll" SelfReg="false"/>
+    <ROW File="devtools_resources.pak" Component_="icudtl.dat" FileName="DEVTOO~1.PAK|devtools_resources.pak" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\devtools_resources.pak" SelfReg="false"/>
+    <ROW File="DropMeter.dll" Component_="DropMeter.dll" FileName="DROPME~1.DLL|DropMeter.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.dll" SelfReg="false"/>
+    <ROW File="DropMeter.pdb" Component_="DropMeter.exe" FileName="DROPME~1.PDB|DropMeter.pdb" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.pdb" SelfReg="false"/>
+    <ROW File="DropMeter.PluginInterface.dll" Component_="DropMeter.PluginInterface.dll" FileName="DROPME~2.DLL|DropMeter.PluginInterface.dll" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.PluginInterface.dll" SelfReg="false"/>
+    <ROW File="DropMeter.PluginInterface.pdb" Component_="DropMeter.PluginInterface.dll" FileName="DROPME~2.PDB|DropMeter.PluginInterface.pdb" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.PluginInterface.pdb" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.runtimeconfig.json" Component_="icudtl.dat" FileName="CEFSHA~1.JSO|CefSharp.BrowserSubprocess.runtimeconfig.json" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\CefSharp.BrowserSubprocess.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="DropMeter.deps.json" Component_="icudtl.dat" FileName="DROPME~1.JSO|DropMeter.deps.json" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.deps.json" SelfReg="false"/>
+    <ROW File="DropMeter.dll.config" Component_="icudtl.dat" FileName="DROPME~1.CON|DropMeter.dll.config" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.dll.config" SelfReg="false"/>
+    <ROW File="DropMeter.runtimeconfig.json" Component_="icudtl.dat" FileName="DROPME~2.JSO|DropMeter.runtimeconfig.json" Attributes="0" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="updater.exe" Component_="updater.exe" FileName="updater.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AI_STUBS&gt;updater.exe" SelfReg="false" DigSign="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
-    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="6" UpdatesUrl="https://cgnmc.azureedge.net/cdn/updates.txt"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
     <ROW Action="AI_DetectSoftware" Sequence="151"/>
@@ -213,6 +215,16 @@
     <ROW Action="AI_ExtractPrereq" Description="Extracting prerequisite software" DescriptionLocId="ActionText.Description.AI_ExtractPrereq" Template="Extracting [1]{[2] completed}" TemplateLocId="ActionText.Template.AI_ExtractPrereq"/>
     <ROW Action="AI_InstallPostPrerequisite" Description="Installing prerequisite software" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="Installing [1]{[2] completed}" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
     <ROW Action="AI_InstallPrerequisite" Description="Installing prerequisite software" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="Installing [1]{[2] completed}" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_ProcessTasks" Description="Generating actions to schedule tasks on the local computer:" DescriptionLocId="ActionText.Description.AI_ProcessTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_ProcessTasks"/>
+    <ROW Action="AI_ProcessTasks2" Description="Generating actions to schedule tasks on the local computer:" DescriptionLocId="ActionText.Description.AI_ProcessTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_ProcessTasks"/>
+    <ROW Action="AI_RemoveTasks" Description="Removing scheduled task from the local computer" DescriptionLocId="ActionText.Description.AI_RemoveTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_RemoveTasks"/>
+    <ROW Action="AI_RemoveTasks2" Description="Removing scheduled task from the local computer" DescriptionLocId="ActionText.Description.AI_RemoveTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_RemoveTasks"/>
+    <ROW Action="AI_RollbackTasks" Description="Rolling back scheduled task on the local computer" DescriptionLocId="ActionText.Description.AI_RollbackTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_RollbackTasks"/>
+    <ROW Action="AI_RollbackTasks2" Description="Rolling back scheduled task on the local computer" DescriptionLocId="ActionText.Description.AI_RollbackTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_RollbackTasks"/>
+    <ROW Action="AI_ScheduleTasks" Description="Scheduling task on the local computer" DescriptionLocId="ActionText.Description.AI_ScheduleTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_ScheduleTasks"/>
+    <ROW Action="AI_ScheduleTasks2" Description="Scheduling task on the local computer" DescriptionLocId="ActionText.Description.AI_ScheduleTasks" Template="Task Name: [1]" TemplateLocId="ActionText.Template.AI_ScheduleTasks"/>
+    <ROW Action="AI_UninstallTasks" Description="Generating actions to remove scheduled tasks from the local computer:" DescriptionLocId="ActionText.Description.AI_UninstallTasks"/>
+    <ROW Action="AI_UninstallTasks2" Description="Generating actions to remove scheduled tasks from the local computer:" DescriptionLocId="ActionText.Description.AI_UninstallTasks"/>
     <ROW Action="AI_VerifyPrereq" Description="Verifying prerequisites" DescriptionLocId="ActionText.Description.AI_VerifyPrereq" Template="[1] was not installed correctly." TemplateLocId="ActionText.Template.AI_VerifyPrereq"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
@@ -225,6 +237,8 @@
     <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
     <ROW Name="aipackagechainer.exe" SourcePath="&lt;AI_CUSTACTS&gt;aipackagechainer.exe"/>
+    <ROW Name="aischeduler.dll" SourcePath="&lt;AI_CUSTACTS&gt;aischeduler.dll"/>
+    <ROW Name="aischeduler2.dll" SourcePath="&lt;AI_CUSTACTS&gt;aischeduler2.dll"/>
     <ROW Name="defaultPrograms.dll" SourcePath="&lt;AI_CUSTACTS&gt;defaultPrograms.dll"/>
     <ROW Name="defaultPrograms.dll_1" SourcePath="&lt;AI_CUSTACTS64&gt;defaultPrograms.dll"/>
     <ROW Name="logo.png" SourcePath="..\DropMeter\Resources\logo.png"/>
@@ -383,15 +397,27 @@
     <ROW Action="AI_LaunchApp" Type="1" Source="aicustact.dll" Target="[#DropMeter.exe]"/>
     <ROW Action="AI_LaunchChainer" Type="3314" Source="AI_PREREQ_CHAINER"/>
     <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_ProcessTasks" Type="1" Source="aischeduler.dll" Target="ProcessTasks"/>
+    <ROW Action="AI_ProcessTasks2" Type="1" Source="aischeduler2.dll" Target="ProcessTasks"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
     <ROW Action="AI_RESTORE_DEFAULTS" Type="1" Source="defaultPrograms.dll" Target="RestoreDefaults"/>
     <ROW Action="AI_RESTORE_DEFAULTS64" Type="1" Source="defaultPrograms.dll_1" Target="RestoreDefaults"/>
     <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
     <ROW Action="AI_RemoveExternalUIStub" Type="1" Source="ExternalUICleaner.dll" Target="RemoveExternalUIStub"/>
+    <ROW Action="AI_RemoveTasks" Type="11265" Source="aischeduler.dll" Target="DeleteTasks" WithoutSeq="true"/>
+    <ROW Action="AI_RemoveTasks2" Type="11265" Source="aischeduler2.dll" Target="DeleteTasks" WithoutSeq="true"/>
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_RollbackTasks" Type="11521" Source="aischeduler.dll" Target="DeleteTasks" WithoutSeq="true"/>
+    <ROW Action="AI_RollbackTasks2" Type="11521" Source="aischeduler2.dll" Target="DeleteTasks" WithoutSeq="true"/>
     <ROW Action="AI_SET_DEFAULTS" Type="1" Source="defaultPrograms.dll" Target="SetDefaultCustom" AdditionalSeq="AI_DATA_SETTER_1"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_ScheduleTasks" Type="11265" Source="aischeduler.dll" Target="ScheduleTasks" WithoutSeq="true"/>
+    <ROW Action="AI_ScheduleTasks2" Type="11265" Source="aischeduler2.dll" Target="ScheduleTasks" WithoutSeq="true"/>
+    <ROW Action="AI_UPDATER_SERVICE_CONFIG" Type="3090" Source="updater.exe" Target="/configservice -name &quot;updater&quot;"/>
+    <ROW Action="AI_UPDATER_UNINSTALL" Type="82" Source="updater.exe" Target="/clean silent"/>
+    <ROW Action="AI_UninstallTasks" Type="1" Source="aischeduler.dll" Target="UninstallTasks"/>
+    <ROW Action="AI_UninstallTasks2" Type="1" Source="aischeduler2.dll" Target="UninstallTasks"/>
     <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
     <ROW Action="DetectProcess" Type="1" Source="aicustact.dll" Target="DetectProcess" Options="3" AdditionalSeq="AI_DATA_SETTER_3"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
@@ -406,7 +432,22 @@
     <ROW Feature_="DropMeter" Component_="APPDIR"/>
     <ROW Feature_="DropMeter" Component_="ProductInformation"/>
     <ROW Feature_="C4FE6FD5B7C4D07B3A313E754A9A6A8" Component_="C4FE6FD5B7C4D07B3A313E754A9A6A8"/>
+    <ROW Feature_="DropMeter" Component_="icudtl.dat"/>
+    <ROW Feature_="DropMeter" Component_="Ijwhost.dll"/>
+    <ROW Feature_="DropMeter" Component_="DropMeter.exe"/>
+    <ROW Feature_="DropMeter" Component_="libcef.dll"/>
+    <ROW Feature_="DropMeter" Component_="libEGL.dll"/>
+    <ROW Feature_="DropMeter" Component_="libGLESv2.dll"/>
+    <ROW Feature_="DropMeter" Component_="Newtonsoft.Json.dll"/>
+    <ROW Feature_="DropMeter" Component_="websocketsharp.dll"/>
+    <ROW Feature_="DropMeter" Component_="am.pak"/>
+    <ROW Feature_="DropMeter" Component_="libEGL.dll_1"/>
+    <ROW Feature_="DropMeter" Component_="libGLESv2.dll_1"/>
+    <ROW Feature_="DropMeter" Component_="CefSharp.BrowserSubprocess.Core.dll"/>
     <ROW Feature_="DropMeter" Component_="CefSharp.BrowserSubprocess.dll"/>
+    <ROW Feature_="DropMeter" Component_="ApplicationDescription"/>
+    <ROW Feature_="DropMeter" Component_="AI_ExePath"/>
+    <ROW Feature_="DropMeter" Component_="AI_CustomARPName"/>
     <ROW Feature_="DropMeter" Component_="CefSharp.BrowserSubprocess.exe"/>
     <ROW Feature_="DropMeter" Component_="CefSharp.Core.dll"/>
     <ROW Feature_="DropMeter" Component_="CefSharp.Core.Runtime.dll"/>
@@ -414,27 +455,26 @@
     <ROW Feature_="DropMeter" Component_="CefSharp.Wpf.dll"/>
     <ROW Feature_="DropMeter" Component_="chrome_elf.dll"/>
     <ROW Feature_="DropMeter" Component_="d3dcompiler_47.dll"/>
-    <ROW Feature_="DropMeter" Component_="DropMeter.exe"/>
-    <ROW Feature_="DropMeter" Component_="devtools_resources.pak"/>
     <ROW Feature_="DropMeter" Component_="DropMeter.dll"/>
     <ROW Feature_="DropMeter" Component_="DropMeter.PluginInterface.dll"/>
-    <ROW Feature_="DropMeter" Component_="Ijwhost.dll"/>
-    <ROW Feature_="DropMeter" Component_="libcef.dll"/>
-    <ROW Feature_="DropMeter" Component_="libEGL.dll"/>
-    <ROW Feature_="DropMeter" Component_="libGLESv2.dll"/>
-    <ROW Feature_="DropMeter" Component_="Newtonsoft.Json.dll"/>
-    <ROW Feature_="DropMeter" Component_="websocketsharp.dll"/>
-    <ROW Feature_="DropMeter" Component_="am.pak"/>
-    <ROW Feature_="DropMeter" Component_="ApplicationDescription"/>
-    <ROW Feature_="DropMeter" Component_="AI_ExePath"/>
-    <ROW Feature_="DropMeter" Component_="AI_CustomARPName"/>
-    <ROW Feature_="DropMeter" Component_="libEGL.dll_3"/>
-    <ROW Feature_="DropMeter" Component_="libGLESv2.dll_3"/>
-    <ROW Feature_="DropMeter" Component_="CefSharp.BrowserSubprocess.Core.dll"/>
+    <ROW Feature_="DropMeter" Component_="updater.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="DropMeter.exe" SourcePath="..\DropMeter\bin\Release\x64\Publish\DropMeter.exe" Index="0"/>
     <ROW Name="logo.exe" SourcePath="..\DropMeter\Resources\logo.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIniFileComponent">
+    <ROW IniFile="AppDir" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="AppDir" Value="[APPDIR]" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="ApplicationName" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="ApplicationName" Value="[ProductName]" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="ApplicationVersion" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="ApplicationVersion" Value="[ProductVersion]" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="CheckFrequency" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="CheckFrequency" Value="2" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="CompanyName" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="CompanyName" Value="[Manufacturer]" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="DefaultCommandLine" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="DefaultCommandLine" Value="/checknow" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="DownloadsFolder" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="DownloadsFolder" Value="[CommonAppDataFolder][Manufacturer]\[ProductName]\updates\" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="Flags" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="Flags" Value="PerMachine|ShowConfigOptionsButton" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="ID" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="ID" Value="[UpgradeCode]" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="SupportServiceName" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="SupportServiceName" Value="updater" Action="0" Component_="updater.exe"/>
+    <ROW IniFile="URL" FileName="updater.ini" DirProperty="APPDIR" Section="General" Key="URL" Value="https://cgnmc.azureedge.net/cdn/DropMeter/updates.txt" Action="0" Component_="updater.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -467,6 +507,12 @@
     <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
     <ROW Action="AI_GetArpIconPath" Sequence="1401"/>
     <ROW Action="AI_RemoveExternalUIStub" Condition="(REMOVE=&quot;ALL&quot;) AND ((VersionNT &gt; 500) OR((VersionNT = 500) AND (ServicePackLevel &gt;= 4)))" Sequence="1501"/>
+    <ROW Action="AI_UPDATER_UNINSTALL" Condition="($updater.exe = 2) AND (?updater.exe = 3) AND NOT (UPGRADINGPRODUCTCODE)" Sequence="1551"/>
+    <ROW Action="AI_ProcessTasks" Condition="REMOVE&lt;&gt;&quot;ALL&quot;" Sequence="1623"/>
+    <ROW Action="AI_UninstallTasks" Condition="REMOVE=&quot;ALL&quot;" Sequence="1698"/>
+    <ROW Action="AI_ProcessTasks2" Condition="(VersionNT &gt;= 600) AND (REMOVE&lt;&gt;&quot;ALL&quot;)" Sequence="1624"/>
+    <ROW Action="AI_UninstallTasks2" Condition="(VersionNT &gt;= 600) AND (REMOVE=&quot;ALL&quot;)" Sequence="1699"/>
+    <ROW Action="AI_UPDATER_SERVICE_CONFIG" Condition="( ( ( NOT Installed AND VersionNT) OR ( Installed AND REMOVE &lt;&gt; &quot;ALL&quot; AND AI_INSTALL_MODE &lt;&gt; &quot;Remove&quot; AND VersionNT) ) AND ($updater.exe = 3) )" Sequence="5801"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
@@ -533,6 +579,12 @@
     <ROW Registry="VersionMinor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMinor" Value="#0" Component_="AI_CustomARPName" VirtualValue="#"/>
     <ROW Registry="dmx" Root="2" Key="SOFTWARE\[Manufacturer]\[ProductName]\Capabilities\FileAssociations" Name=".dmx" Value="GabrielTK.DropMeter.dmx" Component_="ApplicationDescription"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServCtrlComponent">
+    <ROW ServiceControl="updater" Name="updater" Event="160" Wait="1" Component_="updater.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServInstComponent">
+    <ROW ServiceInstall="updater" Name="updater" DisplayName="updater" ServiceType="16" StartType="3" ErrorControl="1" Arguments="/runservice" Component_="updater.exe" Description="Updater Support Service"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
     <ROW Shortcut="DropMeter" Directory_="StartupFolder" Name="DROPME~1|DropMeter" Component_="DropMeter.exe" Target="[#DropMeter.exe]" Hotkey="0" Icon_="DropMeter.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
     <ROW Shortcut="DropMeter_1" Directory_="ProgramMenuFolder" Name="DROPME~1|DropMeter" Component_="DropMeter.exe" Target="[#DropMeter.exe]" Hotkey="0" Icon_="DropMeter.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
@@ -555,5 +607,11 @@
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
     <ROW SearchKey="A9DBE469DEED46998DA553406739ED74Mic" Prereq="A9DBE469DEED46998DA553406739ED74" SearchType="0" SearchString="[ProgramFiles64Folder]dotnet\shared\Microsoft.WindowsDesktop.App\5.0.0\Microsoft.WindowsDesktop.App.runtimeconfig.json" Order="1" Property="PreReqSearch_A9DBE469DEED46998DA553"/>
     <ROW SearchKey="C4FE6FD5B7C4D07B3A313E754A9A6A8Vers" Prereq="C4FE6FD5B7C4D07B3A313E754A9A6A8" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum\Version" VerMin="14.26.28720" Order="1" Property="PreReqSearch_C4FE6FD5B7C4D07B3A313E"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.ScheduledTasksComponent">
+    <ROW TaskId="AI_updater" TaskName="DropMeter Updater" Run="[#updater.exe]" WorkDir="[APPDIR]" UserProp="[%UserDomain]\[LogonUser]" StartTime="0" Flags="25600" Trigger="1|1|1|1|0|0|0|" Condition="1" TaskVersion="2.0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.UpdaterComponent">
+    <ROW Updater="updater.exe" URL="URL" SearchFreq="CheckFrequency" DownloadsFolder="DownloadsFolder" ID="ID" TargetDir="AppDir" AppName="ApplicationName" AppVersion="ApplicationVersion" CompanyName="CompanyName" DefCommandLine="DefaultCommandLine" SupportServiceName="SupportServiceName" Flags="Flags" IconIndex="0" UnistallCASeq="AI_UPDATER_UNINSTALL" SupportServiceCASeq="AI_UPDATER_SERVICE_CONFIG" SupportService="updater" SupportServiceCtrl="updater" TaskId="AI_updater" Description="[|UpdaterName] [|ProductVersion]"/>
   </COMPONENT>
 </DOCUMENT>

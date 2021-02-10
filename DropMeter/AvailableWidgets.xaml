@@ -14,13 +14,13 @@
         <CollectionViewSource x:Key="availableWidgets" Source="{Binding Widgets, UpdateSourceTrigger=PropertyChanged }" Filter="FilterCollection"  >
         </CollectionViewSource>
     </Page.Resources>
-    <Grid ShowGridLines="False">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0" x:Name="availableList" Margin="10,10,0,10" HorizontalAlignment="Left" Width="400" ItemsSource="{Binding Source={StaticResource availableWidgets}}">
-            
+
             <ListBox.ItemTemplate>
                 <DataTemplate >
                     <TextBlock  DataContext="{Binding Value}" Text="{Binding Name}"/>
@@ -28,7 +28,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" Width="370">
+        <Grid Grid.Column="1" Margin="10,0,10,0">
             <Button x:Name="LoadWidget" Content="Load Widget
 " Margin="0,10,10,0" VerticalAlignment="Top" Click="LoadWidget_OnClick"/>
             <Button Content="Save Configuration" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="ButtonBase_OnClick"/>

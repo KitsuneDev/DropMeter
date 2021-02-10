@@ -57,13 +57,15 @@ namespace DropMeter.PluginMgr
 
         }
 
-        public void CloseWidget(string widgetName)
+        public void CloseWidget(string widgetName, bool AutoRebuildContext = true)
         {
             if (!OpenWidgets.ContainsKey(widgetName)) return;
             var data = OpenWidgets[widgetName];
             data.Close();
             OpenWidgets.Remove(widgetName);
+            if (AutoRebuildContext) ((App)Application.Current).CreateContextMenu();
             ChangedLoadedWidgets();
+
         }
 
         private void ChangedLoadedWidgets()
@@ -75,7 +77,7 @@ namespace DropMeter.PluginMgr
 
         public void LoadAvailableWidgets()
         {
-
+            Widgets.Clear();
             foreach (var widget in Directory.EnumerateDirectories(App.WidgetsBase))
             {
                 var mfPath = Path.Combine(widget, "manifest.json");

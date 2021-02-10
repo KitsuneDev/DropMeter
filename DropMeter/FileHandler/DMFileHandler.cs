@@ -55,6 +55,7 @@ namespace DropMeter.FileHandler
 
                         }
                         ZipFile.ExtractToDirectory(path, target);
+                        if(!isPlugin) App.widgetLoader.LoadAvailableWidgets();
                         var extraAction = (manifest.ExtensionType == ManifestType.Widget)
                             ? (isUpdate ? "It will be reloaded." : "Enable it at the Management Center.")
                             : "Please restart DropMeter."; //TODO: Reload plugins?

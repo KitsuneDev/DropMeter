@@ -136,7 +136,10 @@ namespace DropMeter
 
                 menu.DropDown.Items.Add("Enter Management Mode").Click += (s, e) => widget.Value.EnterMoveMode();
                 menu.DropDown.Items.Add("Open DevTools").Click += (sender, args) => widget.Value.WebView.ShowDevTools();
-                menu.DropDown.Items.Add("Unload").Click += (s, e) => widget.Value.Close();
+                menu.DropDown.Items.Add("Unload").Click += (s, e) =>
+                {
+                    widgetLoader.CloseWidget(widget.Key);
+                };
 
 
                 _notifyIcon.ContextMenuStrip.Items.Add(menu);
