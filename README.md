@@ -17,7 +17,7 @@ Think Rainmeter, but with richer and easier to make widgets.
 
 ## Is this a replacement for Rainmeter?
 
-I wouldn't say a _replacement_, per see. Rainmeter was initially releasen back in 2001, and it excels at rendering widgets with low resource usage. However, times have changed, and with the new design trends, many crave for more interactive, responsive and intelligent widgets. That's where DropMeter comes in.
+I wouldn't say a _replacement_, per see. Rainmeter was initially released back in 2001, and it excels at rendering widgets with low resource usage. However, times have changed, and with the new design trends, many crave for more interactive, responsive and intelligent widgets. That's where DropMeter comes in.
 I personally like to combine both, running clocks and audio visualizers on RainMeter and my fancy things on DropMeter.
 
 ## Is there any advantage of combining it with Rainmeter, then?
