@@ -1,3 +1,5 @@
+<meta name="google-site-verification" content="ixQojejZMjKWZJw8zlSfdFGdWG_nyeRZuiNh7f6yWhI" />
+
 <img src="https://github.com/GabrielTK/DropMeter/raw/master/DropMeter/Resources/logo.png" width="100" height="100">
 
 # DropMeter
