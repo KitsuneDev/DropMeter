@@ -1,7 +1,15 @@
+<meta name="google-site-verification" content="ixQojejZMjKWZJw8zlSfdFGdWG_nyeRZuiNh7f6yWhI" />
+
 <img src="https://github.com/GabrielTK/DropMeter/raw/master/DropMeter/Resources/logo.png" width="100" height="100">
 
 # DropMeter
 Modern, easy way to create Widgets for your Desktop.
+
+## Straight to the point... Where Can I get it?
+
+Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
+
+**If you have any doubts, feel free to contact @gab#8998 on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
 
 ## What is this?
 
@@ -11,7 +19,7 @@ Think Rainmeter, but with richer and easier to make widgets.
 
 ## Is this a replacement for Rainmeter?
 
-I wouldn't say a _replacement_, per see. Rainmeter was initially releasen back in 2001, and it excels at rendering widgets with low resource usage. However, times have changed, and with the new design trends, many crave for more interactive, responsive and intelligent widgets. That's where DropMeter comes in.
+I wouldn't say a _replacement_, per see. Rainmeter was initially released back in 2001, and it excels at rendering widgets with low resource usage. However, times have changed, and with the new design trends, many crave for more interactive, responsive and intelligent widgets. That's where DropMeter comes in.
 I personally like to combine both, running clocks and audio visualizers on RainMeter and my fancy things on DropMeter.
 
 ## Is there any advantage of combining it with Rainmeter, then?
@@ -29,9 +37,3 @@ We even have a built-in WebNowPlaying Plugin, so you don't need to make that ext
 
 I wouldn't worry: Our runtime is pretty optimized, and seems to be able to handle things quite smoothly.
 Testing on my machine with my word-by-word lyrics widget (quite heavy, uses React, Framer Motion animations and an interval-based tick system) tops usage at 1% CPU and 79MB on RAM.
-
-## Cool... Where Can I get it?
-
-Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
-
-**If you have any doubts, feel free to contact @gab#8998 on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
