@@ -14,15 +14,27 @@
     <ROW Section="1.0.2" Key="ServerFileName" Value="Install DropMeter-1.0.2.exe" ValueLocId="-"/>
     <ROW Section="1.0.2" Key="RegistryKey" Value="HKUD\Software\GabrielTK\DropMeter\Version" ValueLocId="-"/>
     <ROW Section="1.0.2" Key="Version" Value="1.0.2.0" ValueLocId="-"/>
-    <ROW Section="Update" Key="Name" Value="DropMeter 1.0.3"/>
-    <ROW Section="Update" Key="ProductVersion" Value="1.0.2.0" ValueLocId="-"/>
-    <ROW Section="Update" Key="URL" Value="https://github.com/GabrielTK/DropMeter/releases/download/1.0.3/Install.DropMeter.x64.exe" ValueLocId="-"/>
-    <ROW Section="Update" Key="Size" Value="Output\Bundled\Install DropMeter-1.0.3.exe" ValueLocId="-"/>
-    <ROW Section="Update" Key="SHA256" Value="Output\Bundled\Install DropMeter-1.0.3.exe" ValueLocId="-"/>
-    <ROW Section="Update" Key="MD5" Value="Output\Bundled\Install DropMeter-1.0.3.exe" ValueLocId="-"/>
-    <ROW Section="Update" Key="ServerFileName" Value="Install DropMeter-1.0.3.exe" ValueLocId="-"/>
-    <ROW Section="Update" Key="RegistryKey" Value="HKUD\Software\GabrielTK\DropMeter\Version" ValueLocId="-"/>
-    <ROW Section="Update" Key="Version" Value="1.0.2.0" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="Name" Value="DropMeter 1.0.3"/>
+    <ROW Section="1.0.3" Key="ProductVersion" Value="1.0.3.0" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="URL" Value="https://github.com/GabrielTK/DropMeter/releases/download/1.0.3/Install.DropMeter.x64.exe" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="Size" Value="Output\Bundled\Install DropMeter-1.0.3.exe" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="SHA256" Value="Output\Bundled\Install DropMeter-1.0.3.exe" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="MD5" Value="Output\Bundled\Install DropMeter-1.0.3.exe" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="ServerFileName" Value="Install DropMeter-1.0.3.exe" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="RegistryKey" Value="HKUD\Software\GabrielTK\DropMeter\Version" ValueLocId="-"/>
+    <ROW Section="1.0.3" Key="Version" Value="1.0.3.0" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="Name" Value="DropMeter 1.0.4"/>
+    <ROW Section="1.0.4" Key="ProductVersion" Value="1.0.4.0" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="URL" Value="https://github.com/GabrielTK/DropMeter/releases/download/1.0.4/Install.DropMeter.x64.exe" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="Size" Value="Output\Bundled\Install DropMeter-1.0.4.exe" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="SHA256" Value="Output\Bundled\Install DropMeter-1.0.4.exe" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="MD5" Value="Output\Bundled\Install DropMeter-1.0.4.exe" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="ServerFileName" Value="Install DropMeter-1.0.4.exe" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="RegistryKey" Value="HKUD\Software\GabrielTK\DropMeter\Version" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="Version" Value="1.0.4.0" ValueLocId="-"/>
+    <ROW Section="1.0.4" Key="Description" Value="This update fixes the goddamn updater. Ironic, isn&apos;t it?"/>
+    <ROW Section="1.0.4" Key="BugFix" Value="Hopefully, no more &quot;No Updates Detected&quot; popups - and no more getting tabbed out of your game matches because of it,"/>
+    <ROW Section="1.0.4" Key="AutoCloseApplication" Value="[APPDIR]DropMeter.exe" ValueLocId="-"/>
     <ATTRIBUTE name="OutputFileName" value="updates.txt"/>
     <ATTRIBUTE name="OutputFolder" value="Output\Updater"/>
   </COMPONENT>
