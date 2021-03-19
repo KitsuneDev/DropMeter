@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallpaperEngineButBetter", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{824F18C2-69B5-4835-9F28-6C21905487A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropMeter.WebNowPlaying", "DropMeter.WebNowPlaying\DropMeter.WebNowPlaying.csproj", "{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DropMeter.WebNowPlaying", "DropMeter.WebNowPlaying\DropMeter.WebNowPlaying.csproj", "{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropMeter.WebNowPlaying.RainMeterCompat", "DropMeter.WebNowPlaying.RainMeterCompat\DropMeter.WebNowPlaying.RainMeterCompat.csproj", "{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,16 @@ Global
 		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|x64.Build.0 = Release|Any CPU
 		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|x86.ActiveCfg = Release|Any CPU
 		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC}.Release|x86.Build.0 = Release|Any CPU
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Debug|x64.ActiveCfg = Debug|x64
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Debug|x64.Build.0 = Debug|x64
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Debug|x86.ActiveCfg = Debug|x86
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Debug|x86.Build.0 = Debug|x86
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Release|Any CPU.ActiveCfg = Release|x86
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Release|x64.ActiveCfg = Release|x64
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Release|x64.Build.0 = Release|x64
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Release|x86.ActiveCfg = Release|x86
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +103,7 @@ Global
 		{8CB91F9B-C8C4-49B5-AFB4-6D6D4168ED11} = {6109B309-64FB-46B1-8541-077FB1E65A94}
 		{C26CA2CE-FDA6-4660-87B4-4CA366FCDF75} = {6109B309-64FB-46B1-8541-077FB1E65A94}
 		{CD28BFE6-E53E-4DC7-97B8-C9200A14BAAC} = {824F18C2-69B5-4835-9F28-6C21905487A5}
+		{E6C9B5D4-78A1-45A0-95F3-48F257D4EE5A} = {824F18C2-69B5-4835-9F28-6C21905487A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A71B154E-B321-4048-A77F-871677BBDA3C}
