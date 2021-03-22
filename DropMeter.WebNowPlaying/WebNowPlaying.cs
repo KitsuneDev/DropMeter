@@ -64,6 +64,15 @@ namespace DropMeter.WebNowPlaying
             Console.WriteLine(e.Data);
             var datas = msg.Split(':');
             WebNowPlaying.helper.BroadcastMessage(datas[0], string.Join(":", datas.Skip(1)));
+            try
+            {
+                WebNowPlaying.RainmeterConnector.Send(e.Data);
+            }
+            catch
+            {
+                //TODO: Log Rainmeter Send Error
+            }
+
             Send(msg);
         
     }
@@ -73,6 +82,7 @@ public class WebNowPlaying : DMPlugin
 
 
         WebNowPlayingReceiver LastPlayer;
+        internal static WebSocket RainmeterConnector = new WebSocket("ws://127.0.0.1:8976/");
         internal static IPluginHelper helper;
         public string DisplayName
         {
@@ -96,11 +106,34 @@ public class WebNowPlaying : DMPlugin
             
             helper.OnMessageReceived += (message, data) =>
             {
-
+                //Pass it to the Player
+                wssv.WebSocketServices["/"].Sessions.Broadcast(message);
             };
+            Task task = Task.Run(ConnectRainmeterCompat);
+            
             return true;
         }
 
+        public async Task<bool> ConnectRainmeterCompat()
+        {
+            int RainMeterTries = 0;
+            while (RainMeterTries <= 10)
+            {
+                try
+                {
+                    RainmeterConnector.Connect();
+
+                    return true;
+                }
+                catch
+                {
+                    await Task.Delay(2000);
+                    RainMeterTries = RainMeterTries + 1;
+                }
+            }
+
+            return false;
+        }
         public void Terminate()
         {
             wssv?.Stop();

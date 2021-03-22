@@ -546,7 +546,7 @@ namespace WebNowPlaying
                 if (wssv == null)
                 {
                     //@TODO Declare on reload so that custom ports can be allowed?
-                    wssv = new WebSocketServer(8974);
+                    wssv = new WebSocketServer(8976);
                 }
 
                 if (wssv.IsListening == false)
