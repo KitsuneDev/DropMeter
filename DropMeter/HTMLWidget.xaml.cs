@@ -13,6 +13,7 @@ using CefSharp.Internals;
 using CefSharp.JavascriptBinding;
 using CefSharp.Wpf;
 using DropMeter.CEF;
+using DropMeter.Win32;
 using Newtonsoft.Json;
 using Path = System.IO.Path;
 
@@ -35,20 +36,11 @@ namespace DropMeter
     public partial class HTMLWidget : Window
     {
         public string WidgetName;
-        /************ win32 interop stuff ****************/
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpWindowClass, string lpWindowName);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string className, string windowTitle);
 
 
         private bool attachToDesktop = true;
 
-        const int GWL_HWNDPARENT = -8;
         
         internal static string DATAPATH = System.IO.Path.Combine(App.BASE, "ldata");
         internal string LDataPath;
@@ -67,17 +59,8 @@ namespace DropMeter
             this.attachToDesktop = attachToDesktop;
             
             InitializeComponent();
-            LDataPath = Path.Combine(DATAPATH, widgetName + ".json");
-            if (File.Exists(LDataPath))
-            {
-
-                WidgetDataStore data = JsonConvert.DeserializeObject<WidgetDataStore>(File.ReadAllText(LDataPath));
-                this.Top = data.TopPosition;
-                this.Left = data.LeftPosition;
-                this.Width = data.Width;
-                this.Height = data.Height;
-
-            }
+            LDataPath = Path.Combine(DATAPATH, widgetName + ".win32.json");
+            
             BrowserSettings settings = new BrowserSettings();
             settings.WebSecurity = CefState.Disabled;
             settings.FileAccessFromFileUrls = CefState.Enabled;
@@ -91,6 +74,16 @@ namespace DropMeter
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (File.Exists(LDataPath))
+            {
+
+                WindowPlacement data = JsonConvert.DeserializeObject<WindowPlacement>(File.ReadAllText(LDataPath));
+                var hwnd = new WindowInteropHelper(this).Handle;
+                data.length = Marshal.SizeOf(typeof(WindowPlacement));
+                data.flags = 0;
+                data.showCmd = (data.showCmd == (int)DISPLAY_MODE.SW_SHOW_MINIMIZED ? (int)DISPLAY_MODE.SW_SHOW_NORMAL : data.showCmd);
+                WindowPlacementWin32.SetWindowPlacement(hwnd, ref data);
+            }
             #region Desktop Widget Inner Gears
             if (attachToDesktop)
             {
@@ -194,14 +187,11 @@ namespace DropMeter
             if (sender != null)
             {
                 Console.WriteLine("Saving Widget Data...");
-                var conf = new WidgetDataStore()
-                {
-                    Height = this.Height,
-                    Width = this.Width,
-                    TopPosition = this.Top,
-                    LeftPosition = this.Left,
-                };
-                var encoded = JsonConvert.SerializeObject(conf);
+
+                WindowPlacement wp;
+                var hwnd = new WindowInteropHelper(this).Handle;
+                WindowPlacementWin32.GetWindowPlacement(hwnd, out wp);
+                var encoded = JsonConvert.SerializeObject(wp);
                 File.WriteAllText(LDataPath, encoded);
             }
 
