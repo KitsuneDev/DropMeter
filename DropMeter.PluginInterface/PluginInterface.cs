@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace DropMeter.PluginInterface
 {
@@ -36,6 +37,8 @@ namespace DropMeter.PluginInterface
         /// <param name="id"></param>
         /// <param name="parameters"></param>
         void BroadcastMessage(string id, object parameters);
+
+        ILogger logger { get; set; }
         /// <summary>
         /// Sends the message from PLG to all the VIEWs
         /// </summary>

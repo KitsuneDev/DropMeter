@@ -17,7 +17,7 @@ using CefSharp.Wpf;
 using DropMeter.CEF;
 using DropMeter.FileHandler;
 using DropMeter.PluginMgr;
-
+using NLog;
 using Westwind.Utilities;
 using Application = System.Windows.Application;
 
@@ -31,7 +31,8 @@ namespace DropMeter
         
         
         internal DMFileHandler fileHandler;
-
+        public static LogFactory LogFactory = new LogFactory();
+        private ILogger AppLogger = LogFactory.GetCurrentClassLogger();
         public static string BASE = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "DropMeter");
         internal static string WidgetsBase = System.IO.Path.Combine(BASE, "widgets");

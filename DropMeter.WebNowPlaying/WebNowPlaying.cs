@@ -12,32 +12,32 @@ namespace DropMeter.WebNowPlaying
     class WebNowPlayingReceiver : WebSocketBehavior
     {
         #region Operations
-        public async void PLAYPAUSE()
+        public void PLAYPAUSE()
         {
             this.Send("PLAYPAUSE");
 
         }
-        public async void NEXT()
+        public void NEXT()
         {
             this.Send("NEXT");
 
         }
-        public async void PREVIOUS()
+        public void PREVIOUS()
         {
             this.Send("PREVIOUS");
 
         }
-        public async void SETPOSITION(int Position)
+        public void SETPOSITION(int Position)
         {
             this.Send("SETPOSITION " + Position);
 
         }
-        public async void SETVOLUME(int Volume)
+        public void SETVOLUME(int Volume)
         {
             this.Send("SETVOLUME "+ Volume);
 
         }
-        public async void REPEAT()
+        public void REPEAT()
         {
             this.Send("REPEAT");
 
@@ -64,14 +64,16 @@ namespace DropMeter.WebNowPlaying
             Console.WriteLine(e.Data);
             var datas = msg.Split(':');
             WebNowPlaying.helper.BroadcastMessage(datas[0], string.Join(":", datas.Skip(1)));
-            try
-            {
-                WebNowPlaying.RainmeterConnector.Send(e.Data);
-            }
-            catch
-            {
-                //TODO: Log Rainmeter Send Error
-            }
+            if(WebNowPlaying.RainmeterConnector.ReadyState == WebSocketState.Open)
+                try
+                {
+                    WebNowPlaying.RainmeterConnector.Send(e.Data);
+                }
+                catch
+                {
+                    //TODO: Log Rainmeter Send Error
+                
+                }
 
             Send(msg);
         
@@ -131,11 +133,12 @@ public class WebNowPlaying : DMPlugin
                     RainMeterTries = RainMeterTries + 1;
                 }
             }
-
+            WebNowPlaying.helper.logger.Warn("Unable to detect Rainmeter Compat.");
             return false;
         }
         public void Terminate()
         {
+            RainmeterConnector.Close();
             wssv?.Stop();
         }
     }

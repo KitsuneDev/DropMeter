@@ -14,6 +14,7 @@ using CefSharp.JavascriptBinding;
 using CefSharp.Wpf;
 using DropMeter.CEF;
 using DropMeter.Win32;
+using NLog;
 using Newtonsoft.Json;
 using Path = System.IO.Path;
 
@@ -40,7 +41,7 @@ namespace DropMeter
 
 
         private bool attachToDesktop = true;
-
+        internal ILogger logger;
         
         internal static string DATAPATH = System.IO.Path.Combine(App.BASE, "ldata");
         internal string LDataPath;
@@ -54,8 +55,8 @@ namespace DropMeter
         }
         public HTMLWidget(string widgetName, bool attachToDesktop = true)
         {
-            
 
+            this.logger = App.LogFactory.GetLogger(widgetName);
             this.attachToDesktop = attachToDesktop;
             
             InitializeComponent();
@@ -76,7 +77,7 @@ namespace DropMeter
         {
             if (File.Exists(LDataPath))
             {
-
+                logger.Debug("Found Win32 POS Info.");
                 WindowPlacement data = JsonConvert.DeserializeObject<WindowPlacement>(File.ReadAllText(LDataPath));
                 var hwnd = new WindowInteropHelper(this).Handle;
                 data.length = Marshal.SizeOf(typeof(WindowPlacement));

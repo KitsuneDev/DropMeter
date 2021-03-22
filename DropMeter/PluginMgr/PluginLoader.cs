@@ -10,15 +10,20 @@ using DropMeter.CEF;
 using DropMeter.PluginInterface;
 using DropMeter.PluginMgr;
 using Newtonsoft.Json;
+using NLog;
 
 namespace DropMeter
 {
     public class PluginHelper : IPluginHelper
     {
         private DMPlugin Plugin;
+
+        public ILogger logger { get; set; }
+
         internal PluginHelper(DMPlugin Plugin)
         {
             this.Plugin = Plugin;
+            this.logger = App.LogFactory.GetLogger(Plugin.Slug);
         }
         public void BroadcastMessage(string id, object parameters)
         {
