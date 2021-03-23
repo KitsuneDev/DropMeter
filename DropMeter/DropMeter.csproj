@@ -11,6 +11,7 @@
     <Platforms>x86;x64</Platforms>
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
     <StartupObject>DropMeter.App</StartupObject>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
@@ -30,6 +31,9 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\DropMeter.PluginInterface\DropMeter.PluginInterface.csproj" />
