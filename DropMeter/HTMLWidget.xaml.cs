@@ -41,6 +41,7 @@ namespace DropMeter
 
 
         private bool attachToDesktop = true;
+        private WallpaperOverwrite WallpaperDisplay;
         internal ILogger logger;
         
         internal static string DATAPATH = System.IO.Path.Combine(App.BASE, "ldata");
@@ -55,6 +56,7 @@ namespace DropMeter
         }
         public HTMLWidget(string widgetName, bool attachToDesktop = true)
         {
+            WallpaperDisplay = new WallpaperOverwrite(this);
 
             this.logger = App.LogFactory.GetLogger(widgetName);
             this.attachToDesktop = attachToDesktop;
@@ -67,6 +69,7 @@ namespace DropMeter
             settings.FileAccessFromFileUrls = CefState.Enabled;
             settings.UniversalAccessFromFileUrls = CefState.Enabled;
             WebView.BrowserSettings = settings;
+            //TODO: Implement config cors bypassing
             var mmx = Cef.AddCrossOriginWhitelistEntry("widgets://test", "https", "musixmatch.com", true);
             WebView.MenuHandler = new CloseMenuHandler(this);
             WebView.DragHandler = new DragDropHandler();
@@ -88,40 +91,7 @@ namespace DropMeter
             #region Desktop Widget Inner Gears
             if (attachToDesktop)
             {
-                
-
-                
-
-                
-                //Init();
-
-                // The window is set to the parent, and the parent window of the background window is set to the Program Manager window.
-                IntPtr hwnd2 = new WindowInteropHelper(this).Handle;
-                //W32.SetParent(hwnd2, programIntPtr);
-
-
-                //IntPtr pWnd = FindWindow("Progman", null);
-                //pWnd = FindWindowEx(pWnd, IntPtr.Zero, "SHELLDLL_DefView", null);
-                //pWnd = FindWindowEx(pWnd, IntPtr.Zero, "SysListView32", null);
-                //IntPtr tWnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
-                //SetParent(tWnd, pWnd);
-                W32.EnumWindows((hwnd, lParam) =>
-                {
-                    var shell = W32.FindWindowEx(hwnd, IntPtr.Zero, "SHELLDLL_DefView", (IntPtr) null);
-                    // Find the WorkerW that contains the SHELLDLL_DefView window handle
-                    if (shell != IntPtr.Zero)
-                    {
-                        //hwnd is WorkerW
-                        W32.SetParent(hwnd2, shell);
-                        // Find the current WorkerW window, the next WorkerW window. 
-                        //IntPtr tempHwnd = W32.FindWindowEx(IntPtr.Zero, hwnd, "WorkerW", (IntPtr)null);
-
-                        // hide this window
-                        //W32.ShowWindow(tempHwnd, 0);
-                    }
-
-                    return true;
-                }, IntPtr.Zero);
+                WallpaperDisplay.AttachToDesktop();
             }
             #endregion
 

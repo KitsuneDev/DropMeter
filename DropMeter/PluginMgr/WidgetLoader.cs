@@ -93,6 +93,18 @@ namespace DropMeter.PluginMgr
                     Console.WriteLine($"Widget at {widget} has no Entrypoint! Skipping.");
                 }
             }
+#if DEBUG
+            if (!Widgets.ContainsKey("DebugWidget"))
+            {
+                Widgets.Add("DebugWidget", new ExtensionManifest()
+                {
+                    Name = "Debug Widget",
+                    ExtensionType = ManifestType.Widget,
+                    ManifestVersion = 1,
+                    Slug = "DebugWidget",
+                });
+            }
+#endif
             //Widgets.DependencyChanged();
         }
         public void LoadWidgets()
