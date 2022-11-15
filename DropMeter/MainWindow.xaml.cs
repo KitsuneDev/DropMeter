@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lively.Core;
 
 namespace DropMeter
 {
@@ -22,21 +23,7 @@ namespace DropMeter
     /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpWindowClass, string lpWindowName);
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string className, string windowTitle);
-        const int GWL_HWNDPARENT = -8;
-        [DllImport("user32.dll")]
-        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-
-        IntPtr programIntPtr = IntPtr.Zero;
-        
-
-
-        public MainWindow()
+        public MainWindow(IDesktopCore core)
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
@@ -50,8 +37,8 @@ namespace DropMeter
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HTMLWidget widget = new HTMLWidget("test",true);
-            widget.Show();
+            //HTMLWidget widget = new HTMLWidget("test",true);
+            //widget.Show();
         }
     }
 }

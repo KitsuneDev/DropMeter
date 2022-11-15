@@ -7,19 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using DropMeter.FileHandler.UIs;
+using DropMeter.PluginMgr;
 using Newtonsoft.Json;
 
 namespace DropMeter.FileHandler
 {
     class DMFileHandler
     {
-        public App App;
-        internal DMFileHandler(App app)
+        public WidgetLoader WidgetLoader { get; set; }
+        public DMFileHandler(WidgetLoader loader)
         {
-            this.App = app;
+            WidgetLoader = loader;
         }
-
-        
 
         internal void OpenFile(string path)
         {
@@ -55,7 +54,7 @@ namespace DropMeter.FileHandler
 
                         }
                         ZipFile.ExtractToDirectory(path, target);
-                        if(!isPlugin) App.widgetLoader.LoadAvailableWidgets();
+                        if(!isPlugin) WidgetLoader.LoadAvailableWidgets();
                         var extraAction = (manifest.ExtensionType == ManifestType.Widget)
                             ? (isUpdate ? "It will be reloaded." : "Enable it at the Management Center.")
                             : "Please restart DropMeter."; //TODO: Reload plugins?

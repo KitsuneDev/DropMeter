@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DropMeter.FileHandler;
 using DropMeter.PluginMgr;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DropMeter
 {
@@ -39,19 +40,19 @@ namespace DropMeter
             }
             var selected = (KeyValuePair<string, ExtensionManifest>)availableList.SelectedItem;
             
-            App.widgetLoader.LoadWidget(selected.Value.Slug);
+            App.Services.GetRequiredService<WidgetLoader>().LoadWidget(selected.Value.Slug);
             //((CollectionViewSource)this.Resources["availableWidgets"]).View.Refresh();
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            App.widgetLoader.SaveWidgetConfig();
+            App.Services.GetRequiredService<WidgetLoader>().SaveWidgetConfig();
         }
 
         private void FilterCollection(object sender, FilterEventArgs e)
         {
             var wn = ((KeyValuePair<string, ExtensionManifest>) e.Item).Key;
-            var pass = !App.widgetLoader.OpenWidgets.ContainsKey(wn);
+            var pass = !App.Services.GetRequiredService<WidgetLoader>().OpenWidgets.ContainsKey(wn);
             e.Accepted = pass;
             
         }

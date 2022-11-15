@@ -8,7 +8,7 @@
         xmlns:cefSharp="clr-namespace:CefSharp;assembly=CefSharp.Core"
         mc:Ignorable="d"
         Title="HTMLWidget" Height="450" Width="800" Loaded="Window_Loaded" MouseDown="Window_MouseDown" Background="{x:Null}" 
-        AllowsTransparency="True" WindowStyle="None">
+        AllowsTransparency="True" WindowStyle="None" Topmost="True">
     <WindowChrome.WindowChrome>
         <WindowChrome 
             CaptionHeight="0"

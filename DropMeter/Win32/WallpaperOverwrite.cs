@@ -10,7 +10,9 @@ namespace DropMeter.Win32
 {
     class WallpaperOverwrite
     {
-        private IntPtr progman, workerw, handle;
+        private IntPtr progman, workerw, handle, originalParent;
+        public bool IsAttached { get; private set; } = false;
+        
         private Window target;
 
         public WallpaperOverwrite(Window target)
@@ -20,6 +22,7 @@ namespace DropMeter.Win32
         public void AttachToDesktop()
         {
             handle = new WindowInteropHelper(target).Handle;
+            originalParent = W32.GetParent(handle);
             // Fetch the Progman window
             progman = W32.FindWindow("Progman", null);
 
@@ -68,6 +71,8 @@ namespace DropMeter.Win32
             }), IntPtr.Zero);
 
             SetParentWorkerW(handle);
+            W32.SystemParametersInfo(W32.SPI_SETDESKWALLPAPER, 0, null, W32.SPIF_UPDATEINIFILE);
+
         }
         /// <summary>
         /// Adds the wp as child of spawned desktop-workerw window.
@@ -99,6 +104,14 @@ namespace DropMeter.Win32
                     throw new Exception("Failed to set window parent.");
                 }
             }
+            IsAttached = true;
+        }
+
+        public void DetachFromDesktop()
+        {
+            handle = new WindowInteropHelper(target).Handle;
+            W32.SetParent(handle, originalParent);
+            IsAttached = false;
         }
     }
 }

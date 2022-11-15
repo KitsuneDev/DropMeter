@@ -7,8 +7,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using DropMeter.Annotations;
 using DropMeter.FileHandler;
+using Lively.Core;
 using Newtonsoft.Json;
 
 
@@ -16,6 +18,12 @@ namespace DropMeter.PluginMgr
 {
     public class WidgetLoader : INotifyPropertyChanged
     {
+        public IDesktopCore DesktopCore;
+
+        public WidgetLoader(IDesktopCore core)
+        {
+            DesktopCore = core;
+        }
         public ObservableDictionary<string, HTMLWidget> OpenWidgets { get; set; } = new ObservableDictionary<string, HTMLWidget>();
         public ObservableDictionary<string, ExtensionManifest> Widgets { get; set; } = new ObservableDictionary<string, ExtensionManifest>();
         internal string LOADED_PATH = System.IO.Path.Combine(App.BASE, "loaded.json");
@@ -52,6 +60,12 @@ namespace DropMeter.PluginMgr
             view.Show();
             OpenWidgets.Add(widgetName, view);
             if(AutoRebuildContext) ((App)Application.Current).CreateContextMenu();
+            WidgetInfo info = new WidgetInfo()
+            {
+                InputHandle = new WindowInteropHelper(view).Handle,
+                manifest = Widgets[widgetName]
+            };
+            DesktopCore.AddWidget(info);
 
             ChangedLoadedWidgets();
 
@@ -65,6 +79,7 @@ namespace DropMeter.PluginMgr
             OpenWidgets.Remove(widgetName);
             if (AutoRebuildContext) ((App)Application.Current).CreateContextMenu();
             ChangedLoadedWidgets();
+            DesktopCore.RemoveWidget(Widgets[widgetName]);
 
         }
 
@@ -72,6 +87,7 @@ namespace DropMeter.PluginMgr
         {
             Widgets.DependencyChanged();
             OpenWidgets.DependencyChanged();
+            DesktopCore.ForceReload();
             OnPropertyChanged(null);
         }
 

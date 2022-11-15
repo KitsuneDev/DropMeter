@@ -17,6 +17,10 @@ using CefSharp.Wpf;
 using DropMeter.CEF;
 using DropMeter.FileHandler;
 using DropMeter.PluginMgr;
+using DropMeter.Win32;
+using Lively.Core;
+using Lively.Core.Display;
+using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using Westwind.Utilities;
 using Application = System.Windows.Application;
@@ -28,16 +32,26 @@ namespace DropMeter
     /// </summary>
     public partial class App : Application
     {
+        public static WidgetLoader widgetLoader => App.Services.GetRequiredService<WidgetLoader>();
+
+        private readonly IServiceProvider _serviceProvider;
+        public static IServiceProvider Services
+        {
+            get
+            {
+                IServiceProvider serviceProvider = ((App)Current)._serviceProvider;
+                return serviceProvider ?? throw new InvalidOperationException("The service provider is not initialized");
+            }
+        }
+
         
-        
-        internal DMFileHandler fileHandler;
         public static LogFactory LogFactory = new LogFactory();
         private ILogger AppLogger = LogFactory.GetCurrentClassLogger();
         public static string BASE = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "DropMeter");
         internal static string WidgetsBase = System.IO.Path.Combine(BASE, "widgets");
         internal static string PluginBase = System.IO.Path.Combine(BASE, "plugins");
-        public static WidgetLoader widgetLoader = new WidgetLoader();
+        
         public Mutex Mutex;
         
         /*[STAThread]
@@ -59,7 +73,7 @@ namespace DropMeter
         public App()
         {
             SingleInstanceCheck();
-
+            _serviceProvider = ConfigureServices();
             if (!Directory.Exists(BASE)) Directory.CreateDirectory(BASE);
             if (!Directory.Exists(WidgetsBase)) Directory.CreateDirectory(WidgetsBase);
             if (!Directory.Exists(PluginBase)) Directory.CreateDirectory(PluginBase);
@@ -90,22 +104,35 @@ namespace DropMeter
             });
 
             Cef.Initialize(settings);
+            Services.GetRequiredService<InputCaptureWindow>().Show();
         }
 
-        
+        private IServiceProvider ConfigureServices()
+        {
+            var provider = new ServiceCollection()
+                .AddSingleton<IDisplayManager, DisplayManager>()
+                .AddSingleton<IDesktopCore, DesktopCore>()
+                .AddSingleton<InputCaptureWindow>()
+                .AddSingleton<MainWindow>()
+                .AddSingleton<WidgetLoader>()
+                .AddSingleton<DMFileHandler>()
+                .BuildServiceProvider();
+            return provider;
+        }
+
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            MainWindow = new MainWindow();
-            MainWindow.Closing += MainWindow_Closing;
-            
-            
+            Services.GetRequiredService<MainWindow>().Show();
+
+
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
             _notifyIcon.Icon = DropMeter.Properties.Resources.Icon;
             _notifyIcon.Visible = true;
-            widgetLoader.LoadWidgets();
+            Services.GetRequiredService<WidgetLoader>().LoadWidgets();
             CreateContextMenu();
         }
 
@@ -115,11 +142,11 @@ namespace DropMeter
                 new System.Windows.Forms.ContextMenuStrip();
             _notifyIcon.ContextMenuStrip.Items.Add("Manage DropMeter").Click += (s, e) => ShowMainWindow();
             _notifyIcon.ContextMenuStrip.Items.Add("-");
-            if (widgetLoader.OpenWidgets.Count() == 0)
+            if (Services.GetRequiredService<WidgetLoader>().OpenWidgets.Count() == 0)
             {
                 _notifyIcon.ContextMenuStrip.Items.Add("No Widgets Loaded");
             }
-            foreach (var widget in widgetLoader.OpenWidgets)
+            foreach (var widget in Services.GetRequiredService<WidgetLoader>().OpenWidgets)
             {
                 ToolStripMenuItem menu;
                 //_notifyIcon.ContextMenuStrip.Items.Add("Manage: " + widget.Key).Click += (s, e) => widget.Value.EnterMoveMode();
@@ -139,7 +166,7 @@ namespace DropMeter
                 menu.DropDown.Items.Add("Open DevTools").Click += (sender, args) => widget.Value.WebView.ShowDevTools();
                 menu.DropDown.Items.Add("Unload").Click += (s, e) =>
                 {
-                    widgetLoader.CloseWidget(widget.Key);
+                    Services.GetRequiredService<WidgetLoader>().CloseWidget(widget.Key);
                 };
 
 
@@ -151,15 +178,15 @@ namespace DropMeter
             
             _notifyIcon.ContextMenuStrip.Items.Add("Reload Widgets").Click += (s, e) =>
             {
-                foreach (var widget in widgetLoader.OpenWidgets)
+                foreach (var widget in Services.GetRequiredService<WidgetLoader>().OpenWidgets)
                 {
                     widget.Value.Close();
                     
                 }
 
-                widgetLoader.OpenWidgets.Clear();
+                Services.GetRequiredService<WidgetLoader>().OpenWidgets.Clear();
                 
-                widgetLoader.LoadWidgets();
+                Services.GetRequiredService<WidgetLoader>().LoadWidgets();
             };
             _notifyIcon.ContextMenuStrip.Items.Add("Reload Plugins").Click += (s,e) => PluginLoader.ReloadPlugins();
             _notifyIcon.ContextMenuStrip.Items.Add("Shutdown").Click += (s, e) => ExitApplication();
@@ -244,8 +271,7 @@ namespace DropMeter
                     {
                         if (!string.IsNullOrEmpty(file))
                         {
-                            if(fileHandler == null) fileHandler = new DMFileHandler(this);
-                            fileHandler.OpenFile(file);
+                            Services.GetRequiredService<DMFileHandler>().OpenFile(file);
                         }
                             
                     }

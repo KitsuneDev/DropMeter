@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Threading;
 using CefSharp;
 using CefSharp.Internals;
 using CefSharp.JavascriptBinding;
 using CefSharp.Wpf;
 using DropMeter.CEF;
 using DropMeter.Win32;
+using H.Hooks;
+using Lively.Core;
 using NLog;
 using Newtonsoft.Json;
 using Path = System.IO.Path;
@@ -38,11 +41,10 @@ namespace DropMeter
     {
         public string WidgetName;
 
-
-
         private bool attachToDesktop = true;
         private WallpaperOverwrite WallpaperDisplay;
         internal ILogger logger;
+        
         
         internal static string DATAPATH = System.IO.Path.Combine(App.BASE, "ldata");
         internal string LDataPath;
@@ -56,7 +58,9 @@ namespace DropMeter
         }
         public HTMLWidget(string widgetName, bool attachToDesktop = true)
         {
+            //this.desktopCore = desktopCore;
             WallpaperDisplay = new WallpaperOverwrite(this);
+            
 
             this.logger = App.LogFactory.GetLogger(widgetName);
             this.attachToDesktop = attachToDesktop;
@@ -73,11 +77,13 @@ namespace DropMeter
             var mmx = Cef.AddCrossOriginWhitelistEntry("widgets://test", "https", "musixmatch.com", true);
             WebView.MenuHandler = new CloseMenuHandler(this);
             WebView.DragHandler = new DragDropHandler();
+            
             this.WidgetName = widgetName;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             if (File.Exists(LDataPath))
             {
                 logger.Debug("Found Win32 POS Info.");
@@ -169,16 +175,25 @@ namespace DropMeter
             this.ResizeMode = ResizeMode.NoResize;
             WidgetMove.Visibility = Visibility.Hidden;
             WebView.Visibility = Visibility.Visible;
+            //if (attachToDesktop && !WallpaperDisplay.IsAttached)
+            //{
+            //WallpaperDisplay.AttachToDesktop();
+            //}
         }
 
         public void EnterMoveMode()
         {
+            //if (attachToDesktop && WallpaperDisplay.IsAttached)
+            //{
+            //    WallpaperDisplay.DetachFromDesktop();
+            //}
             Dispatcher.Invoke(() =>
             {
                 this.ResizeMode = ResizeMode.CanResizeWithGrip;
                 WidgetMove.Visibility = Visibility.Visible;
                 WebView.Visibility = Visibility.Hidden;
             });
+            
         }
 
         private void WebView_FrameLoadEnd(object sender, FrameLoadEndEventArgs args)
