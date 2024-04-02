@@ -9,7 +9,7 @@ Modern, easy way to create Widgets for your Desktop.
 
 Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
 
-**If you have any doubts, feel free to contact @gab#8998 on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
+**If you have any doubts, feel free to contact @kitsune.dev on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
 
 ## What is this?
 
