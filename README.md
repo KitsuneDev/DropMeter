@@ -4,12 +4,11 @@
 
 # DropMeter
 Modern, easy way to create Widgets for your Desktop.
+> ⚠️ **DropMeter is integrating into Rainmeter (as a plugin).**
+> Join the [Discord Server](https://discord.gg/DBE44yU) for more information.
+> The standalone version of DropMeter will not be updated anymore.
 
-## Straight to the point... Where Can I get it?
-
-Happy you are excited! [Downloads are available by clicking here](https://github.com/GabrielTK/DropMeter/releases/latest)
-
-**If you have any doubts, feel free to contact @kitsune.dev on Discord DMs, or join the [CGN Interactive Projects Discord Server](https://discord.gg/DBE44yU)**
+**If you have any questions, feel free to contact @kitsune.dev on Discord DMs, or join the [Discord Server](https://discord.gg/DBE44yU)**
 
 ## What is this?
 
